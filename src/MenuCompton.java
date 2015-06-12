@@ -35,7 +35,7 @@ public class MenuCompton extends JFrame
 	public MenuCompton()//Konstruktor domyœlny
 	{
 		//Ramka G³ówna
-		mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE); // zamykanie ramki
+		mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE); // zamykanie ramki
 		mainFrame.setResizable(false);	//skalowanie ramki przez u¿ytkownika
 		mainFrame.setVisible(true); //wywo³anie ramki
 		mainFrame.setSize (800, 800); //rozmiar
