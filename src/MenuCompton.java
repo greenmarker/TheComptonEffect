@@ -1,28 +1,20 @@
 
 
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
 import java.util.Timer;
 
 import javax.swing.*;
 import net.miginfocom.swing.MigLayout;
 
 
-public class MenuCompton extends JFrame
+public class
+		MenuCompton extends JFrame
 {
+	final ResourceBundle bundle = PropertyResourceBundle.getBundle("compton");
 	
 	//Tworzenie obiektu
-	JFrame mainFrame = new JFrame("ComptonEffect"); //Ramka G³ówna
-	
-	JMenuBar mainMenu = new JMenuBar();
-	
-	JMenu file = new JMenu("Plik");
-	JMenu comptonEffect = new JMenu("Zjawisko Comptona");
-	JMenu language = new JMenu("Jêzyk");
-	
-	JMenuItem option = new JMenuItem("Opcje");
-	JMenuItem exit = new JMenuItem("Wyjœcie");
-	JMenuItem effect = new JMenuItem("Opis Zjawiska");
-	JMenuItem polish = new JMenuItem("Polski");
-	JMenuItem english = new JMenuItem("Angielski");
+	JFrame mainFrame = new JFrame(bundle.getString("app_title")); //Ramka G³ówna
 	
 	JPanel menuPanel = new JPanel(new MigLayout());
 	JPanel animationPanel = new JPanel(new MigLayout());
@@ -47,22 +39,8 @@ public class MenuCompton extends JFrame
 		
 		//Pasek
 		
-		//Od File
-		mainMenu.add(file);
-		file.add(option);
-		file.add(exit);
-		
-		//Od Zjawiska Comptona
-		mainMenu.add(comptonEffect);
-		comptonEffect.add(effect);
-		
-		//Od Jêzyka
-		mainMenu.add(language);
-		language.add(polish);
-		language.add(english);
-		
 		//Panel
-		menuPanel.add(mainMenu);
+		menuPanel.add(new MenuBuilder().build());
 		
 		//Sinusioda
 		
