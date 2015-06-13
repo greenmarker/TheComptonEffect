@@ -1,6 +1,8 @@
 
 import java.awt.Dimension;
 import java.util.Hashtable;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -12,6 +14,10 @@ import net.miginfocom.swing.MigLayout;
 
 public class OptionCompton extends JPanel 
 {
+
+	final ResourceBundle bundle = PropertyResourceBundle.getBundle("compton");
+
+
 	 static final int FPS_MIN = 1; //minimalna wartość
 	 static final int FPS_MAX = 1000;
 	 static final int FPS_INIT = 500;
@@ -24,23 +30,24 @@ public class OptionCompton extends JPanel
 	 
 	JLabel optionTitle = new JLabel("Zródła");
 	
-	JLabel fotonEnergyBefore = new JLabel("Energia Fotonu przed rozproszeniem");
-	JTextField fotonEnergyBeforeField = new JTextField("Energia w keV");
+	JLabel fotonEnergyBefore = new JLabel(bundle.getString("parameter_energy_before_dissipation"));
+	JTextField fotonEnergyBeforeField = new JTextField(bundle.getString("parameter_energy"));
 	JSlider fotonEnergyBeforeSlider = new JSlider(FPS_MIN, FPS_MAX, FPS_INIT);
 	Hashtable<Integer, JLabel> labelSlider = new Hashtable<Integer, JLabel>();
 	
 	Hashtable<Integer, JLabel> anglelabelSlider = new Hashtable<Integer, JLabel>();
-	JLabel anglebBefore = new JLabel("Kąt rozproszenia fotonu");
+	JLabel anglebBefore = new JLabel(bundle.getString("parameter_angle"));
 	JTextField angleBeforeField = new JTextField();
 	JSlider angleBeforeSlider = new JSlider(FPS_MIN1, FPS_MAX1, FPS_INIT1);
 	
-	JLabel fotonEnergyAfter = new JLabel("Energia Fotonu po rozproszeniu");
-	JTextField fotonEnergyAfterFields = new JTextField("Energia w keV");
+	JLabel fotonEnergyAfter = new JLabel(bundle.getString("parameter_energy_after_dissipation"));
+	JTextField fotonEnergyAfterFields = new JTextField(bundle.getString("parameter_energy"));
 	
-	JLabel sourceExample = new JLabel("Przykładowe źródła");
+	JLabel sourceExample = new JLabel(bundle.getString("sample_sources"));
 	
-	JRadioButton sourceCez = new JRadioButton("Cez(137) 662 keV");
-	JRadioButton sourceJod = new JRadioButton("Jod(131) 364 keV");
+	JRadioButton sourceCez = new JRadioButton(bundle.getString("caesium"));
+	JRadioButton sourceJod = new JRadioButton(bundle.getString("iodine"));
+
 	public OptionCompton()
 	{
 		optionPanel.add(optionTitle,"wrap");
