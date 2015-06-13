@@ -14,7 +14,7 @@ public class SinusiodComponent extends JPanel
 
     private final Dimension size = new Dimension(768, 494);//(szerokość(width),wysokość(height))
     
-    private int amplitude = 20; //ampltida
+    private int amplitude = 20; //amplituda
     private int frequency = 2;	//częstotliwość
 
     private int x = 0; //deklaracja x w momencie początkowym
