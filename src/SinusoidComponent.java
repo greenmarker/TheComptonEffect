@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import compton.animation.Function;
 
 
-public class SinusiodComponent extends JPanel
+public class SinusoidComponent extends JPanel
 {
 
     private final Dimension size = new Dimension(768, 494);//(szerokość(width),wysokość(height))
@@ -32,7 +32,7 @@ public class SinusiodComponent extends JPanel
     private int yBase1 = 0;
 
 
-    SinusiodComponent() {
+    SinusoidComponent() {
         super(true);
     }
 
@@ -45,7 +45,7 @@ public class SinusiodComponent extends JPanel
         clear(g2);
         drawChart(g2);
 
-        g2.translate(size.getWidth()/2, size.getHeight()/2);
+        g2.translate(size.getWidth() / 2, size.getHeight() / 2);
 
 
         //g2.setColor(Color.BLACK);//kulka
@@ -175,9 +175,9 @@ public class SinusiodComponent extends JPanel
 
     public static class Sinusoider extends TimerTask {
 
-        private final SinusiodComponent panel;
+        private final SinusoidComponent panel;
 
-        Sinusoider(final SinusiodComponent panel) {
+        Sinusoider(final SinusoidComponent panel) {
             this.panel = panel;
         }
 
@@ -191,9 +191,9 @@ public class SinusiodComponent extends JPanel
 
     public static class Repainter extends TimerTask {
 
-        private final SinusiodComponent panel;
+        private final SinusoidComponent panel;
 
-        Repainter(final SinusiodComponent panel) {
+        Repainter(final SinusoidComponent panel) {
             this.panel = panel;
         }
 

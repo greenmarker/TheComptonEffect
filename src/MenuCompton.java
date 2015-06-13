@@ -19,7 +19,7 @@ public class MenuCompton extends JFrame
 	JPanel menuPanel = new JPanel(new MigLayout());
 	JPanel animationPanel = new JPanel(new MigLayout());
 	//Animation
-	SinusiodComponent sinusoid = new SinusiodComponent();
+	SinusoidComponent sinusoid = new SinusoidComponent();
 	
 	OptionCompton optionPanel = new OptionCompton();
 	
@@ -44,8 +44,8 @@ public class MenuCompton extends JFrame
 		
 		//Sinusioda
 		
-		final SinusiodComponent.Sinusoider t = new SinusiodComponent.Sinusoider(sinusoid);
-		final SinusiodComponent.Repainter r = new SinusiodComponent.Repainter(sinusoid);
+		final SinusoidComponent.Sinusoider t = new SinusoidComponent.Sinusoider(sinusoid);
+		final SinusoidComponent.Repainter r = new SinusoidComponent.Repainter(sinusoid);
 
         final Timer tickTimer = new Timer();
         final Timer paintTimer = new Timer();
