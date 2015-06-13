@@ -99,8 +99,13 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="sliderEnergyBefore" pref="826" max="32767" attributes="0"/>
-                              <Component id="sliderAngle" pref="826" max="32767" attributes="0"/>
+                              <Component id="unitkeV" min="-2" max="-2" attributes="0"/>
+                              <Component id="unitDegree" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="sliderEnergyBefore" pref="776" max="32767" attributes="0"/>
+                              <Component id="sliderAngle" pref="776" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -115,6 +120,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtEnergyBefore" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="labelEnergyBefore" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="unitkeV" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
@@ -122,6 +128,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtAngle" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="labelAngle" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="unitDegree" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="sliderAngle" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -177,8 +184,14 @@
               <ResourceString bundle="compton.properties" key="parameter_energy" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEnergyBeforeKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtAngle">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtAngleKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEnergyAfter">
         </Component>
@@ -202,6 +215,9 @@
             <Property name="maximum" type="int" value="1000"/>
             <Property name="paintLabels" type="boolean" value="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="sliderEnergyBeforeStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSlider" name="sliderAngle">
           <Properties>
@@ -209,10 +225,32 @@
             <Property name="maximum" type="int" value="180"/>
             <Property name="paintLabels" type="boolean" value="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="sliderAngleStateChanged"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="unitkeV">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="compton.properties" key="unit_kev" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="unitDegree">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="compton.properties" key="unit_degree" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="panelAnimation">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">

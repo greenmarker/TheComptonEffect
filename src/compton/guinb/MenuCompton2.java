@@ -47,6 +47,8 @@ public class MenuCompton2 extends javax.swing.JFrame {
         radioIodine = new javax.swing.JRadioButton();
         sliderEnergyBefore = new javax.swing.JSlider();
         sliderAngle = new javax.swing.JSlider();
+        unitkeV = new javax.swing.JLabel();
+        unitDegree = new javax.swing.JLabel();
         panelAnimation = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -65,6 +67,17 @@ public class MenuCompton2 extends javax.swing.JFrame {
         labelSource.setText(bundle.getString("sample_sources")); // NOI18N
 
         txtEnergyBefore.setToolTipText(bundle.getString("parameter_energy")); // NOI18N
+        txtEnergyBefore.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEnergyBeforeKeyReleased(evt);
+            }
+        });
+
+        txtAngle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAngleKeyReleased(evt);
+            }
+        });
 
         radioCaesium.setText(bundle.getString("caesium")); // NOI18N
 
@@ -73,10 +86,24 @@ public class MenuCompton2 extends javax.swing.JFrame {
         sliderEnergyBefore.setMajorTickSpacing(1000);
         sliderEnergyBefore.setMaximum(1000);
         sliderEnergyBefore.setPaintLabels(true);
+        sliderEnergyBefore.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderEnergyBeforeStateChanged(evt);
+            }
+        });
 
         sliderAngle.setMajorTickSpacing(180);
         sliderAngle.setMaximum(180);
         sliderAngle.setPaintLabels(true);
+        sliderAngle.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderAngleStateChanged(evt);
+            }
+        });
+
+        unitkeV.setText(bundle.getString("unit_kev")); // NOI18N
+
+        unitDegree.setText(bundle.getString("unit_degree")); // NOI18N
 
         javax.swing.GroupLayout panelParametersLayout = new javax.swing.GroupLayout(panelParameters);
         panelParameters.setLayout(panelParametersLayout);
@@ -103,8 +130,12 @@ public class MenuCompton2 extends javax.swing.JFrame {
                             .addComponent(txtEnergyAfter, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sliderEnergyBefore, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)
-                            .addComponent(sliderAngle, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)))))
+                            .addComponent(unitkeV)
+                            .addComponent(unitDegree))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sliderEnergyBefore, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
+                            .addComponent(sliderAngle, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)))))
         );
         panelParametersLayout.setVerticalGroup(
             panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,12 +144,14 @@ public class MenuCompton2 extends javax.swing.JFrame {
                     .addComponent(sliderEnergyBefore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtEnergyBefore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labelEnergyBefore)))
+                        .addComponent(labelEnergyBefore)
+                        .addComponent(unitkeV)))
                 .addGap(3, 3, 3)
                 .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtAngle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labelAngle))
+                        .addComponent(labelAngle)
+                        .addComponent(unitDegree))
                     .addComponent(sliderAngle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -132,6 +165,8 @@ public class MenuCompton2 extends javax.swing.JFrame {
                 .addComponent(radioIodine)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        panelAnimation.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout panelAnimationLayout = new javax.swing.GroupLayout(panelAnimation);
         panelAnimation.setLayout(panelAnimationLayout);
@@ -175,6 +210,22 @@ public class MenuCompton2 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void sliderEnergyBeforeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderEnergyBeforeStateChanged
+        this.txtEnergyBefore.setText(sliderEnergyBefore.getValue() + "");
+    }//GEN-LAST:event_sliderEnergyBeforeStateChanged
+
+    private void sliderAngleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderAngleStateChanged
+        this.txtAngle.setText(sliderAngle.getValue() + "");
+    }//GEN-LAST:event_sliderAngleStateChanged
+
+    private void txtEnergyBeforeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEnergyBeforeKeyReleased
+        this.sliderEnergyBefore.setValue(Integer.parseInt(this.txtAngle.getText()));
+    }//GEN-LAST:event_txtEnergyBeforeKeyReleased
+
+    private void txtAngleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAngleKeyReleased
+        this.sliderAngle.setValue(Integer.parseInt(this.txtAngle.getText()));
+    }//GEN-LAST:event_txtAngleKeyReleased
 
     /**
      * @param args the command line arguments
@@ -229,5 +280,7 @@ public class MenuCompton2 extends javax.swing.JFrame {
     private javax.swing.JTextField txtAngle;
     private javax.swing.JTextField txtEnergyAfter;
     private javax.swing.JTextField txtEnergyBefore;
+    private javax.swing.JLabel unitDegree;
+    private javax.swing.JLabel unitkeV;
     // End of variables declaration//GEN-END:variables
 }
