@@ -1,3 +1,5 @@
+package compton.animation;
+
 
 
 import java.awt.Color;
@@ -32,7 +34,7 @@ public class SinusoidComponent extends JPanel
     private int yBase1 = 0;
 
 
-    SinusoidComponent() {
+    public SinusoidComponent() {
         super(true);
     }
 
@@ -177,7 +179,7 @@ public class SinusoidComponent extends JPanel
 
         private final SinusoidComponent panel;
 
-        Sinusoider(final SinusoidComponent panel) {
+        public Sinusoider(final SinusoidComponent panel) {
             this.panel = panel;
         }
 
@@ -193,7 +195,7 @@ public class SinusoidComponent extends JPanel
 
         private final SinusoidComponent panel;
 
-        Repainter(final SinusoidComponent panel) {
+        public Repainter(final SinusoidComponent panel) {
             this.panel = panel;
         }
 

@@ -1,5 +1,8 @@
+package compton.ui;
 
 
+
+import compton.animation.SinusoidComponent;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 import java.util.Timer;
@@ -21,7 +24,7 @@ public class MenuCompton extends JFrame
 	//Animation
 	SinusoidComponent sinusoid = new SinusoidComponent();
 	
-	OptionCompton optionPanel = new OptionCompton();
+	OptionsPanel optionPanel = new OptionsPanel();
 	
 
 	public MenuCompton()//Konstruktor domyślny
@@ -54,18 +57,6 @@ public class MenuCompton extends JFrame
         tickTimer.schedule(t, 1000, 10);
         
         animationPanel.add(sinusoid);
-	}
-	
-	
-	
-	
-	
-	public static void main(String[] args)
-	{	
-		//Ramka Główna
-		MenuCompton frame1 = new MenuCompton();
-		
-		
 	}
 	
 }

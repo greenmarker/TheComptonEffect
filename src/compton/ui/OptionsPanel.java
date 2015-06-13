@@ -1,3 +1,5 @@
+package compton.ui;
+
 import java.awt.Dimension;
 import java.util.Hashtable;
 import java.util.PropertyResourceBundle;
@@ -11,7 +13,7 @@ import javax.swing.JTextField;
 
 import net.miginfocom.swing.MigLayout;
 
-public class OptionCompton extends JPanel {
+public class OptionsPanel extends JPanel {
 
 	final ResourceBundle bundle = PropertyResourceBundle.getBundle("compton");
 
@@ -45,7 +47,7 @@ public class OptionCompton extends JPanel {
 	JRadioButton sourceCez = new JRadioButton(bundle.getString("caesium"));
 	JRadioButton sourceJod = new JRadioButton(bundle.getString("iodine"));
 
-	public OptionCompton()
+	public OptionsPanel()
 	{
 		optionPanel.add(optionTitle,"wrap");
         
