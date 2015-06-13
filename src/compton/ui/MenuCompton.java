@@ -47,14 +47,7 @@ public class MenuCompton extends JFrame
 		
 		//Sinusioda
 		
-		final SinusoidComponent.Sinusoider t = new SinusoidComponent.Sinusoider(sinusoid);
-		final SinusoidComponent.Repainter r = new SinusoidComponent.Repainter(sinusoid);
 
-        final Timer tickTimer = new Timer();
-        final Timer paintTimer = new Timer();
-
-        paintTimer.schedule(r, 1000, 50);
-        tickTimer.schedule(t, 1000, 10);
         
         animationPanel.add(sinusoid);
 	}

@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
+import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.JPanel;
@@ -36,6 +37,18 @@ public class SinusoidComponent extends JPanel
 
     public SinusoidComponent() {
         super(true);
+        startAnimation();
+    }
+
+    private void startAnimation(){
+        final SinusoidComponent.Sinusoider t = new Sinusoider(this);
+        final SinusoidComponent.Repainter r = new Repainter(this);
+
+        final Timer tickTimer = new Timer();
+        final Timer paintTimer = new Timer();
+
+        paintTimer.schedule(r, 1000, 50);
+        tickTimer.schedule(t, 1000, 10);
     }
 
     @Override
@@ -48,9 +61,9 @@ public class SinusoidComponent extends JPanel
 
         drawChart(g2);
 
-        g2.translate(size.getWidth() / 2, size.getHeight() / 2);
+        g2.translate(getWidth() / 2, getHeight() / 2);
 
-        //drawSquare(g2);
+        drawSquare(g2);
 
 
         //g2.setColor(Color.BLACK);//kulka
@@ -67,7 +80,7 @@ public class SinusoidComponent extends JPanel
              }, amplitude, 50, x - getWidth()/2, 0);
 
         // restore
-        g2.translate(size.getWidth()/2, size.getHeight()/2);
+        g2.translate(getWidth()/2, getHeight()/2);
     }
 
     private void clear(Graphics2D g2) {
@@ -79,8 +92,9 @@ public class SinusoidComponent extends JPanel
         int w = this.getWidth();
         int h = this.getHeight();
         int a = Math.min(w, h)/2;
+
         g2.setColor(Color.GRAY);
-        g2.fillRect(-a, -a, a, a);
+        g2.drawOval(-a, -a, 2*a, 2*a);
     }
 
     private void drawChart(Graphics2D g2){
