@@ -59,7 +59,7 @@ public class SinusiodComponent extends JPanel
 			public double f(double x) {
 				return Math.sin(x);
 			}
-             }, amplitude, 50, 0, 0);
+             }, amplitude, 50, x - getWidth()/2, 0);
 
         // restore
         g2.translate(size.getWidth()/2, size.getHeight()/2);
@@ -93,8 +93,8 @@ public class SinusiodComponent extends JPanel
     public void drawFunction(Graphics2D g2, Function f, double amplitude, double wavelength, int mx, int my){
     	Polygon p = new Polygon();
     	
-    	for (int x = 0; x <= wavelength; x++) {
-            p.addPoint(x + mx, (int)(amplitude/2) - (int) (amplitude/2 * f.f((x / amplitude) * 2 * Math.PI)) + my);
+    	for (int x = mx; x <= mx + wavelength; x++) {
+            p.addPoint(x, (int)(amplitude/2) - (int) (amplitude/2 * f.f((x / amplitude) * 2 * Math.PI)) + my);
         }
     	g2.setColor(Color.red);
         g2.drawPolyline(p.xpoints, p.ypoints, p.npoints);
