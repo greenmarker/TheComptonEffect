@@ -3,7 +3,7 @@ import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 /**
- * Created by Kamil on 2015-06-12.
+ * Created by Dominik Boryczka on 2015-06-12.
  */
 public class MenuBuilder {
 

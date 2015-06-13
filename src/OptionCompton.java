@@ -28,7 +28,7 @@ public class OptionCompton extends JPanel
 	 
 	 JPanel optionPanel = new JPanel(new MigLayout());
 	 
-	JLabel optionTitle = new JLabel("Zródła");
+	JLabel optionTitle = new JLabel(bundle.getString(bundle.getString("menu_sample")));
 	
 	JLabel fotonEnergyBefore = new JLabel(bundle.getString("parameter_energy_before_dissipation"));
 	JTextField fotonEnergyBeforeField = new JTextField(bundle.getString("parameter_energy"));
