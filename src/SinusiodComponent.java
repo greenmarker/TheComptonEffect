@@ -4,9 +4,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Polygon;
 import java.util.TimerTask;
 
 import javax.swing.JPanel;
+
+import compton.animation.Function;
 
 
 public class SinusiodComponent extends JPanel
@@ -39,38 +42,65 @@ public class SinusiodComponent extends JPanel
 
         final Graphics2D g2 = (Graphics2D)g;
 
+        clear(g2);
+        drawChart(g2);
+
+        g2.translate(size.getWidth()/2, size.getHeight()/2);
+
+
+        //g2.setColor(Color.BLACK);//kulka
+        //g2.fillOval(x, (int)y, 20, 20);
+        
+        //g2.setColor(Color.BLACK);//kulka
+        //g2.fillOval(x1, (int)y1, 20, 20);
+        
+        drawFunction(g2, new Function(){
+			@Override
+			public double f(double x) {
+				return Math.sin(x);
+			}
+             }, amplitude, 50, 0, 0);
+
+        // restore
+        g2.translate(size.getWidth()/2, size.getHeight()/2);
+    }
+
+    private void clear(Graphics2D g2) {
         g2.setColor(Color.WHITE);//obszar animacji
         g2.fillRect(0, 0, size.width, size.height);
+    }
 
+    private void drawChart(Graphics2D g2){
         g2.setColor(Color.BLACK);
         g2.drawOval(393, 246, 20, 20);
-        
-        
-        	g2.setColor(Color.BLACK);//kulka
-        	g2.fillOval(x, (int)y, 20, 20);
-        	
-        
+
         g2.setColor(Color.BLACK);
         g2.drawLine (403,0, 403, 246);
-        
+
         g2.setColor(Color.BLACK);
         g2.drawLine (403,266, 403, 494);
-        
+
         g2.setColor(Color.BLACK);
         g2.drawLine (0,256, 392, 256);
-        
+
         g2.setColor(Color.BLACK);
         g2.drawLine (414,256, 985, 256);
-        
+
         g2.setColor(Color.BLACK);
         g2.drawLine (398,256, 408, 256);
-        
-        g2.setColor(Color.BLACK);//kulka
-        g2.fillOval(x1, (int)y1, 20, 20);
+    }
+    
+    public void drawFunction(Graphics2D g2, Function f, double amplitude, double wavelength, int mx, int my){
+    	Polygon p = new Polygon();
+    	
+    	for (int x = 0; x <= wavelength; x++) {
+            p.addPoint(x + mx, (int)(amplitude/2) - (int) (amplitude/2 * f.f((x / amplitude) * 2 * Math.PI)) + my);
+        }
+    	g2.setColor(Color.red);
+        g2.drawPolyline(p.xpoints, p.ypoints, p.npoints);
     }
 
     @Override
- 
     public Dimension getPreferredSize() //preferowany rozmiar
     {
         return size;
