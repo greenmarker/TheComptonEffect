@@ -12,19 +12,19 @@ import javax.swing.JPanel;
 public class SinusiodComponent extends JPanel
 {
 
-    private final Dimension size = new Dimension(768, 494);//(szerokoœæ(width),wysokoœæ(height))
+    private final Dimension size = new Dimension(768, 494);//(szerokoÅ›Ä‡(width),wysokoÅ›Ä‡(height))
     
     private int amplitude = 20; //ampltida
-    private int frequency = 2;	//czêstotliwoœæ
+    private int frequency = 2;	//czÄ™stotliwoÅ›Ä‡
 
-    private int x = 0; //deklaracja x w momencie pocz¹tkowym
+    private int x = 0; //deklaracja x w momencie poczÄ…tkowym
     private double y = size.height / 2; //deklaracja y 
     private int yBase = 0;
 
     private int amplitude1 = 20; //amplituda
-    private int frequency1 = 5;	//czêstotliwoœæ
+    private int frequency1 = 5;	//czÄ™stotliwoÅ›Ä‡
 
-    private int x1 = 412; //deklaracja x w momencie pocz¹tkowym
+    private int x1 = 412; //deklaracja x w momencie poczÄ…tkowym
     private double y1 = size.height / 2; //deklaracja y
     private int yBase1 = 0;
 
@@ -90,13 +90,13 @@ public class SinusiodComponent extends JPanel
 
     public void fotonsinusiod1() {
     	
-        //Przenies piksel w prawo; Pêtla na po lewej stronie po osi¹gniêciu krawêdzi
+        //Przenies piksel w prawo; PÄ™tla na po lewej stronie po osiÄ…gniÄ™ciu krawÄ™dzi
         x = (++x) % 376;
 
-        //D³ugoœæ fali = jeden pe³ny panel szerokoœæ podzielona przez czêstotliwoœæ
+        //DÅ‚ugoÅ›Ä‡ fali = jeden peÅ‚ny panel szerokoÅ›Ä‡ podzielona przez czÄ™stotliwoÅ›Ä‡
         final int waveLength = size.width / frequency;
 
-        //Zwiêkszanie yBase; ograniczenie siê przy d³ugoœci fali
+        //ZwiÄ™kszanie yBase; ograniczenie siÄ™ przy dÅ‚ugoÅ›ci fali
         yBase = (++yBase) % waveLength;
 
         //Normalizacja [0..1]
@@ -115,13 +115,13 @@ public class SinusiodComponent extends JPanel
 
     public void fotonsinusiod2() {
 
-        //Przenies piksel w prawo; Pêtla na po lewej stronie po osi¹gniêciu krawêdzi
+        //Przenies piksel w prawo; PÄ™tla na po lewej stronie po osiÄ…gniÄ™ciu krawÄ™dzi
         x1 = (++x1) % size.width;
 
-        //D³ugoœæ fali = jeden pe³ny panel szerokoœæ podzielona przez czêstotliwoœæ
+        //DÅ‚ugoÅ›Ä‡ fali = jeden peÅ‚ny panel szerokoÅ›Ä‡ podzielona przez czÄ™stotliwoÅ›Ä‡
         final int waveLength = size.width / frequency1;
 
-        //Zwiêkszanie yBase; ograniczenie siê przy d³ugoœci fali
+        //ZwiÄ™kszanie yBase; ograniczenie siÄ™ przy dÅ‚ugoÅ›ci fali
         yBase1 = (++yBase1) % waveLength;
 
         //Normalizacja [0..1]

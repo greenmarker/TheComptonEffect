@@ -31,7 +31,7 @@ public class MenuBuilder {
         mainMenu.add(comptonEffect);
         comptonEffect.add(effect);
 
-        //Od Jêzyka
+        //Od JÄ™zyka
         mainMenu.add(language);
         language.add(polish);
         language.add(english);

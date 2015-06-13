@@ -14,7 +14,7 @@ public class
 	final ResourceBundle bundle = PropertyResourceBundle.getBundle("compton");
 	
 	//Tworzenie obiektu
-	JFrame mainFrame = new JFrame(bundle.getString("app_title")); //Ramka G³ówna
+	JFrame mainFrame = new JFrame(bundle.getString("app_title")); //Ramka GÅ‚Ã³wna
 	
 	JPanel menuPanel = new JPanel(new MigLayout());
 	JPanel animationPanel = new JPanel(new MigLayout());
@@ -24,12 +24,12 @@ public class
 	OptionCompton optionPanel = new OptionCompton();
 	
 
-	public MenuCompton()//Konstruktor domyœlny
+	public MenuCompton()//Konstruktor domyÅ›lny
 	{
-		//Ramka G³ówna
+		//Ramka GÅ‚Ã³wna
 		mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE); // zamykanie ramki
-		mainFrame.setResizable(false);	//skalowanie ramki przez u¿ytkownika
-		mainFrame.setVisible(true); //wywo³anie ramki
+		mainFrame.setResizable(false);	//skalowanie ramki przez uÅ¼ytkownika
+		mainFrame.setVisible(true); //wywoÅ‚anie ramki
 		mainFrame.setSize (800, 800); //rozmiar
 		mainFrame.setLayout(new MigLayout());
 		mainFrame.add(menuPanel,  "north");
@@ -62,7 +62,7 @@ public class
 	
 	public static void main(String[] args)
 	{	
-		//Ramka G³ówna
+		//Ramka GÅ‚Ã³wna
 		MenuCompton frame1 = new MenuCompton();
 		
 		

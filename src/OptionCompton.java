@@ -12,17 +12,17 @@ import net.miginfocom.swing.MigLayout;
 
 public class OptionCompton extends JPanel 
 {
-	 static final int FPS_MIN = 1; //minimalna wartoœæ
+	 static final int FPS_MIN = 1; //minimalna wartoÅ›Ä‡
 	 static final int FPS_MAX = 1000;
 	 static final int FPS_INIT = 500;
 	
-	 static final int FPS_MIN1 = 0; //minimalna wartoœæ
+	 static final int FPS_MIN1 = 0; //minimalna wartoÅ›Ä‡
 	 static final int FPS_MAX1 = 180;
 	 static final int FPS_INIT1 = 90;
 	 
 	 JPanel optionPanel = new JPanel(new MigLayout());
 	 
-	JLabel optionTitle = new JLabel("Zród³a");
+	JLabel optionTitle = new JLabel("ZrÃ³dÅ‚a");
 	
 	JLabel fotonEnergyBefore = new JLabel("Energia Fotonu przed rozproszeniem");
 	JTextField fotonEnergyBeforeField = new JTextField("Energia w keV");
@@ -30,14 +30,14 @@ public class OptionCompton extends JPanel
 	Hashtable<Integer, JLabel> labelSlider = new Hashtable<Integer, JLabel>();
 	
 	Hashtable<Integer, JLabel> anglelabelSlider = new Hashtable<Integer, JLabel>();
-	JLabel anglebBefore = new JLabel("K¹t rozproszenia fotonu");
+	JLabel anglebBefore = new JLabel("KÄ…t rozproszenia fotonu");
 	JTextField angleBeforeField = new JTextField();
 	JSlider angleBeforeSlider = new JSlider(FPS_MIN1, FPS_MAX1, FPS_INIT1);
 	
 	JLabel fotonEnergyAfter = new JLabel("Energia Fotonu po rozproszeniu");
 	JTextField fotonEnergyAfterFields = new JTextField("Energia w keV");
 	
-	JLabel sourceExample = new JLabel("Przyk³adowe Ÿród³a");
+	JLabel sourceExample = new JLabel("PrzykÅ‚adowe ÅºrÃ³dÅ‚a");
 	
 	JRadioButton sourceCez = new JRadioButton("Cez(137) 662 keV");
 	JRadioButton sourceJod = new JRadioButton("Jod(131) 364 keV");
