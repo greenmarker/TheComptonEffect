@@ -7,6 +7,7 @@ package compton.guinb;
  */
 
 import compton.AppConstants;
+import compton.Physics;
 import compton.animation.SinusoidComponent;
 
 import java.awt.*;
@@ -35,7 +36,7 @@ public class MenuCompton2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        source = new javax.swing.ButtonGroup();
         panelParameters = new javax.swing.JPanel();
         labelEnergyBefore = new javax.swing.JLabel();
         labelAngle = new javax.swing.JLabel();
@@ -82,8 +83,13 @@ public class MenuCompton2 extends javax.swing.JFrame {
             }
         });
 
+        txtEnergyAfter.setEditable(false);
+
+        source.add(radioCaesium);
+        radioCaesium.setSelected(true);
         radioCaesium.setText(bundle.getString("caesium")); // NOI18N
 
+        source.add(radioIodine);
         radioIodine.setText(bundle.getString("iodine")); // NOI18N
 
         sliderEnergyBefore.setMajorTickSpacing(1000);
@@ -218,20 +224,42 @@ public class MenuCompton2 extends javax.swing.JFrame {
 
     private void sliderEnergyBeforeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderEnergyBeforeStateChanged
         this.txtEnergyBefore.setText(sliderEnergyBefore.getValue() + "");
+        updateEnergyAfter();
     }//GEN-LAST:event_sliderEnergyBeforeStateChanged
 
     private void sliderAngleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderAngleStateChanged
         this.txtAngle.setText(sliderAngle.getValue() + "");
+        updateEnergyAfter();
     }//GEN-LAST:event_sliderAngleStateChanged
 
     private void txtEnergyBeforeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEnergyBeforeKeyReleased
         this.sliderEnergyBefore.setValue(Integer.parseInt(this.txtAngle.getText()));
+        updateEnergyAfter();
     }//GEN-LAST:event_txtEnergyBeforeKeyReleased
 
     private void txtAngleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAngleKeyReleased
         this.sliderAngle.setValue(Integer.parseInt(this.txtAngle.getText()));
+        updateEnergyAfter();
     }//GEN-LAST:event_txtAngleKeyReleased
 
+    private void updateEnergyAfter(){
+        double energyBefore = Double.parseDouble(this.txtEnergyBefore.getText());
+        double electronMass = getSourceEnergy(); // TODO check what really should be here
+        double angle = Double.parseDouble(this.txtAngle.getText());
+        double energyAfter = Physics.getEnergyAfter(energyBefore, electronMass, angle);
+        this.txtEnergyAfter.setText(energyAfter + "");
+    }
+
+    private int getSourceEnergy(){
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("compton");
+        if (radioCaesium.isSelected()){
+            return 662;
+        } else if (radioIodine.isSelected()){
+            return 364;
+        }
+        throw new RuntimeException("None of listed atoms was selected: "); // this would be a programmers error
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -268,7 +296,6 @@ public class MenuCompton2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -282,6 +309,7 @@ public class MenuCompton2 extends javax.swing.JFrame {
     private javax.swing.JRadioButton radioIodine;
     private javax.swing.JSlider sliderAngle;
     private javax.swing.JSlider sliderEnergyBefore;
+    private javax.swing.ButtonGroup source;
     private javax.swing.JTextField txtAngle;
     private javax.swing.JTextField txtEnergyAfter;
     private javax.swing.JTextField txtEnergyBefore;
