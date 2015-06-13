@@ -6,6 +6,10 @@ package compton.guinb;
  * and open the template in the editor.
  */
 
+import compton.animation.SinusoidComponent;
+
+import java.awt.*;
+
 /**
  *
  * @author Kamil
@@ -17,7 +21,8 @@ public class MenuCompton2 extends javax.swing.JFrame {
      */
     public MenuCompton2() {
         initComponents();
-        //panelAnimation.add(new SinusiodComponent());
+        panelAnimation.setLayout(new BorderLayout());
+        panelAnimation.add(new SinusoidComponent(), BorderLayout.CENTER);
     }
 
     /**
@@ -48,6 +53,7 @@ public class MenuCompton2 extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(242, 242, 242));
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("compton"); // NOI18N
         labelEnergyBefore.setText(bundle.getString("parameter_energy_before_dissipation")); // NOI18N
@@ -89,7 +95,7 @@ public class MenuCompton2 extends javax.swing.JFrame {
                         .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(radioIodine)
                             .addComponent(radioCaesium))
-                        .addGap(0, 85, Short.MAX_VALUE))
+                        .addGap(0, 654, Short.MAX_VALUE))
                     .addGroup(panelParametersLayout.createSequentialGroup()
                         .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtEnergyBefore, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
@@ -97,8 +103,8 @@ public class MenuCompton2 extends javax.swing.JFrame {
                             .addComponent(txtEnergyAfter, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sliderEnergyBefore, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                            .addComponent(sliderAngle, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)))))
+                            .addComponent(sliderEnergyBefore, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)
+                            .addComponent(sliderAngle, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)))))
         );
         panelParametersLayout.setVerticalGroup(
             panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,7 +129,8 @@ public class MenuCompton2 extends javax.swing.JFrame {
                     .addComponent(labelSource)
                     .addComponent(radioCaesium))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(radioIodine))
+                .addComponent(radioIodine)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelAnimationLayout = new javax.swing.GroupLayout(panelAnimation);
@@ -134,7 +141,7 @@ public class MenuCompton2 extends javax.swing.JFrame {
         );
         panelAnimationLayout.setVerticalGroup(
             panelAnimationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 295, Short.MAX_VALUE)
+            .addGap(0, 474, Short.MAX_VALUE)
         );
 
         jMenu1.setText("File");
@@ -160,10 +167,10 @@ public class MenuCompton2 extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelAnimation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelAnimation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelParameters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();

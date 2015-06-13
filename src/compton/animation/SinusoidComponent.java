@@ -45,6 +45,7 @@ public class SinusoidComponent extends JPanel
         final Graphics2D g2 = (Graphics2D)g;
 
         clear(g2);
+        drawSquare(g2);
         drawChart(g2);
 
         g2.translate(size.getWidth() / 2, size.getHeight() / 2);
@@ -70,6 +71,12 @@ public class SinusoidComponent extends JPanel
     private void clear(Graphics2D g2) {
         g2.setColor(Color.WHITE);//obszar animacji
         g2.fillRect(0, 0, size.width, size.height);
+    }
+
+    private void drawSquare(Graphics2D g2){
+        int w = this.getWidth();
+        int h = this.getHeight();
+        int min = Math.min(w, h);
     }
 
     private void drawChart(Graphics2D g2){
