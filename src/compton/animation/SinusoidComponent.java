@@ -59,7 +59,7 @@ public class SinusoidComponent extends JPanel
 
         clear(g2);
 
-        drawChart(g2);
+        //drawChart(g2);
 
         g2.translate(getWidth() / 2, getHeight() / 2);
 
@@ -79,8 +79,18 @@ public class SinusoidComponent extends JPanel
 			}
              }, amplitude, 50, x - getWidth()/2, 0);
 
+        drawElectron(g2);
+
         // restore
-        g2.translate(getWidth()/2, getHeight()/2);
+        g2.translate(getWidth() / 2, getHeight() / 2);
+    }
+
+    private void drawElectron(Graphics2D g2) {
+        int re = (int)(getRadius() * 0.05);
+        g2.setColor(Color.WHITE);
+        g2.fillOval(-re, -re, 2 * re, 2 * re);
+        g2.setColor(Color.BLACK);
+        g2.drawOval(-re, -re, 2*re, 2*re);
     }
 
     private void clear(Graphics2D g2) {
@@ -88,15 +98,22 @@ public class SinusoidComponent extends JPanel
         g2.fillRect(0, 0, getWidth(), getHeight());
     }
 
-    private void drawSquare(Graphics2D g2){
-        int w = this.getWidth();
-        int h = this.getHeight();
-        int a = Math.min(w, h)/2;
-
-        g2.setColor(Color.GRAY);
-        g2.drawOval(-a, -a, 2*a, 2*a);
+    private int getRadius(){
+        return Math.min(getWidth(), getHeight())/2;
     }
 
+    private void drawSquare(Graphics2D g2){
+        int r = getRadius();
+
+        g2.setColor(Color.GRAY);
+        g2.drawOval(-r, -r, 2*r, 2*r);
+
+        g2.setColor(new Color(210, 210, 210));
+        g2.drawLine(0, -r, 0, r); //  |
+        g2.drawLine(-r, 0, r, 0); // ---
+    }
+
+    @Deprecated
     private void drawChart(Graphics2D g2){
         g2.setColor(Color.BLACK);
         g2.drawOval(393, 246, 20, 20);
