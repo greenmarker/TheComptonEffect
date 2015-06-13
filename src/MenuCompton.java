@@ -54,9 +54,6 @@ public class
         tickTimer.schedule(t, 1000, 10);
         
         animationPanel.add(sinusoid);
-        
-        
-        
 	}
 	
 	

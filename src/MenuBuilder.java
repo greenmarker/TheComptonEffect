@@ -14,14 +14,14 @@ public class MenuBuilder {
 
         //Od File
         JMenu file = new JMenu(bundle.getString("menu_file"));
-        JMenu comptonEffect = new JMenu("Zjawisko Comptona");
-        JMenu language = new JMenu("Jêzyk");
+        JMenu comptonEffect = new JMenu(bundle.getString("menu_compton"));
+        JMenu language = new JMenu(bundle.getString("menu_language"));
 
-        JMenuItem option = new JMenuItem("Opcje");
-        JMenuItem exit = new JMenuItem("Wyjœcie");
-        JMenuItem effect = new JMenuItem("Opis Zjawiska");
-        JMenuItem polish = new JMenuItem("Polski");
-        JMenuItem english = new JMenuItem("Angielski");
+        JMenuItem option = new JMenuItem(bundle.getString("menu_options"));
+        JMenuItem exit = new JMenuItem(bundle.getString("menu_exit"));
+        JMenuItem effect = new JMenuItem(bundle.getString("menu_effect"));
+        JMenuItem polish = new JMenuItem(bundle.getString("language_polish"));
+        JMenuItem english = new JMenuItem(bundle.getString("language_english"));
 
         mainMenu.add(file);
         file.add(option);

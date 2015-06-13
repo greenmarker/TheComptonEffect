@@ -16,21 +16,24 @@ public class SinusiodComponent extends JPanel
     
     private int amplitude = 20; //ampltida
     private int frequency = 2;	//czêstotliwoœæ
-    
-    
 
-    private int x = 0; //deklaracja x w moencie pocz¹tkowym
+    private int x = 0; //deklaracja x w momencie pocz¹tkowym
     private double y = size.height / 2; //deklaracja y 
     private int yBase = 0;
 
-    
-    
+    private int amplitude1 = 20; //amplituda
+    private int frequency1 = 5;	//czêstotliwoœæ
+
+    private int x1 = 412; //deklaracja x w momencie pocz¹tkowym
+    private double y1 = size.height / 2; //deklaracja y
+    private int yBase1 = 0;
+
+
     SinusiodComponent() {
-
         super(true);
-
     }
-  @Override
+
+    @Override
     protected void paintComponent(final Graphics g) //rysowanie
     {
 
@@ -80,7 +83,7 @@ public class SinusiodComponent extends JPanel
     }
 
     @Override
-    public Dimension getMaximumSize() //maksymalny romiar
+    public Dimension getMaximumSize() //maksymalny rozmiar
     {
         return size;
     }
@@ -109,13 +112,7 @@ public class SinusiodComponent extends JPanel
         y = (int)(sine * amplitude) + size.height/2;
     	
     }
-    private int amplitude1 = 20; //ampltida
-    private int frequency1 = 5;	//czêstotliwoœæ
-    
-    private int x1 = 412; //deklaracja x w moencie pocz¹tkowym
-    private double y1 = size.height / 2; //deklaracja y 
-    private int yBase1 = 0;
-    
+
     public void fotonsinusiod2() {
 
         //Przenies piksel w prawo; Pêtla na po lewej stronie po osi¹gniêciu krawêdzi
@@ -151,17 +148,13 @@ public class SinusiodComponent extends JPanel
         private final SinusiodComponent panel;
 
         Sinusoider(final SinusiodComponent panel) {
-
             this.panel = panel;
-
         }
 
         @Override
         public void run() {
-
             panel.fotonsinusiod1();
             panel.fotonsinusiod2();
-
         }
 
     }
@@ -171,16 +164,12 @@ public class SinusiodComponent extends JPanel
         private final SinusiodComponent panel;
 
         Repainter(final SinusiodComponent panel) {
-
             this.panel = panel;
-
         }
 
         @Override
         public void run() {
-
             panel.repaint();
-
         }
 
     }
