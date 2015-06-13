@@ -1,4 +1,3 @@
-
 import java.awt.Dimension;
 import java.util.Hashtable;
 import java.util.PropertyResourceBundle;
@@ -12,11 +11,9 @@ import javax.swing.JTextField;
 
 import net.miginfocom.swing.MigLayout;
 
-public class OptionCompton extends JPanel 
-{
+public class OptionCompton extends JPanel {
 
 	final ResourceBundle bundle = PropertyResourceBundle.getBundle("compton");
-
 
 	 static final int FPS_MIN = 1; //minimalna wartość
 	 static final int FPS_MAX = 1000;
@@ -28,7 +25,7 @@ public class OptionCompton extends JPanel
 	 
 	 JPanel optionPanel = new JPanel(new MigLayout());
 	 
-	JLabel optionTitle = new JLabel(bundle.getString(bundle.getString("menu_sample")));
+	JLabel optionTitle = new JLabel(bundle.getString("menu_sample"));
 	
 	JLabel fotonEnergyBefore = new JLabel(bundle.getString("parameter_energy_before_dissipation"));
 	JTextField fotonEnergyBeforeField = new JTextField(bundle.getString("parameter_energy"));
@@ -59,7 +56,6 @@ public class OptionCompton extends JPanel
         
         optionPanel.add(fotonEnergyBeforeSlider,"span 4,wrap");
         
-        
         labelSlider.put(new Integer(1), new JLabel("1 keV"));
         labelSlider.put(new Integer(FPS_MAX), new JLabel("1000 keV"));
         
@@ -81,13 +77,9 @@ public class OptionCompton extends JPanel
         optionPanel.add(fotonEnergyAfterFields,"wrap");
         fotonEnergyAfterFields.setPreferredSize( new Dimension( 150, 24 ) );
         
-        //newline
+        // sample sources
         optionPanel.add(sourceExample,"wrap");
-        
-        //newline
         optionPanel.add(sourceCez,"wrap");
-       
-        //newline
         optionPanel.add(sourceJod);
         add(optionPanel);
 	}

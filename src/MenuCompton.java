@@ -5,11 +5,11 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 
 import javax.swing.*;
+
 import net.miginfocom.swing.MigLayout;
 
 
-public class
-		MenuCompton extends JFrame
+public class MenuCompton extends JFrame
 {
 	final ResourceBundle bundle = PropertyResourceBundle.getBundle("compton");
 	

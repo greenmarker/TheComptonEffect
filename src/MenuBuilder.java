@@ -8,21 +8,21 @@ import java.util.ResourceBundle;
 public class MenuBuilder {
 
     final ResourceBundle bundle = PropertyResourceBundle.getBundle("compton");
+    
+    JMenu file = new JMenu(bundle.getString("menu_file"));
+    JMenu comptonEffect = new JMenu(bundle.getString("menu_compton"));
+    JMenu language = new JMenu(bundle.getString("menu_language"));
+    
+    JMenuItem option = new JMenuItem(bundle.getString("menu_options"));
+    JMenuItem exit = new JMenuItem(bundle.getString("menu_exit"));
+    JMenuItem effect = new JMenuItem(bundle.getString("menu_effect"));
+    JMenuItem polish = new JMenuItem(bundle.getString("language_polish"));
+    JMenuItem english = new JMenuItem(bundle.getString("language_english"));
 
     public JMenuBar build(){
         JMenuBar mainMenu = new JMenuBar();
 
         //Od File
-        JMenu file = new JMenu(bundle.getString("menu_file"));
-        JMenu comptonEffect = new JMenu(bundle.getString("menu_compton"));
-        JMenu language = new JMenu(bundle.getString("menu_language"));
-
-        JMenuItem option = new JMenuItem(bundle.getString("menu_options"));
-        JMenuItem exit = new JMenuItem(bundle.getString("menu_exit"));
-        JMenuItem effect = new JMenuItem(bundle.getString("menu_effect"));
-        JMenuItem polish = new JMenuItem(bundle.getString("language_polish"));
-        JMenuItem english = new JMenuItem(bundle.getString("language_english"));
-
         mainMenu.add(file);
         file.add(option);
         file.add(exit);
