@@ -11,6 +11,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 
+import compton.AppConstants;
 import net.miginfocom.swing.MigLayout;
 
 public class OptionsPanel extends JPanel {
@@ -63,6 +64,7 @@ public class OptionsPanel extends JPanel {
         
         fotonEnergyBeforeSlider.setLabelTable(labelSlider);
         fotonEnergyBeforeSlider.setPaintLabels (true);
+		fotonEnergyBeforeSlider.setValue(AppConstants.DEFAULT_ENERGY_BEFORE);
         
         //newline
         optionPanel.add(anglebBefore);
@@ -74,6 +76,7 @@ public class OptionsPanel extends JPanel {
         anglelabelSlider.put(new Integer(FPS_MAX1), new JLabel("180"));
         angleBeforeSlider.setLabelTable(anglelabelSlider);
         angleBeforeSlider.setPaintLabels (true);
+		angleBeforeSlider.setValue(AppConstants.DEFAULT_ANGLE);
         
         optionPanel.add(fotonEnergyAfter);
         optionPanel.add(fotonEnergyAfterFields,"wrap");

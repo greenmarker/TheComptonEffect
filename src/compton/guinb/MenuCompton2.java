@@ -6,6 +6,7 @@ package compton.guinb;
  * and open the template in the editor.
  */
 
+import compton.AppConstants;
 import compton.animation.SinusoidComponent;
 
 import java.awt.*;
@@ -66,6 +67,7 @@ public class MenuCompton2 extends javax.swing.JFrame {
 
         labelSource.setText(bundle.getString("sample_sources")); // NOI18N
 
+        txtEnergyBefore.setText(AppConstants.DEFAULT_ENERGY_BEFORE + "");
         txtEnergyBefore.setToolTipText(bundle.getString("parameter_energy")); // NOI18N
         txtEnergyBefore.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -73,6 +75,7 @@ public class MenuCompton2 extends javax.swing.JFrame {
             }
         });
 
+        txtAngle.setText(AppConstants.DEFAULT_ANGLE + "");
         txtAngle.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtAngleKeyReleased(evt);
@@ -86,6 +89,7 @@ public class MenuCompton2 extends javax.swing.JFrame {
         sliderEnergyBefore.setMajorTickSpacing(1000);
         sliderEnergyBefore.setMaximum(1000);
         sliderEnergyBefore.setPaintLabels(true);
+        sliderEnergyBefore.setValue(AppConstants.DEFAULT_ENERGY_BEFORE);
         sliderEnergyBefore.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderEnergyBeforeStateChanged(evt);
@@ -95,6 +99,7 @@ public class MenuCompton2 extends javax.swing.JFrame {
         sliderAngle.setMajorTickSpacing(180);
         sliderAngle.setMaximum(180);
         sliderAngle.setPaintLabels(true);
+        sliderAngle.setValue(AppConstants.DEFAULT_ANGLE);
         sliderAngle.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderAngleStateChanged(evt);
@@ -125,7 +130,7 @@ public class MenuCompton2 extends javax.swing.JFrame {
                         .addGap(0, 654, Short.MAX_VALUE))
                     .addGroup(panelParametersLayout.createSequentialGroup()
                         .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEnergyBefore, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                            .addComponent(txtEnergyBefore)
                             .addComponent(txtAngle)
                             .addComponent(txtEnergyAfter, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -134,8 +139,8 @@ public class MenuCompton2 extends javax.swing.JFrame {
                             .addComponent(unitDegree))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sliderEnergyBefore, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
-                            .addComponent(sliderAngle, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)))))
+                            .addComponent(sliderEnergyBefore, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
+                            .addComponent(sliderAngle, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)))))
         );
         panelParametersLayout.setVerticalGroup(
             panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
