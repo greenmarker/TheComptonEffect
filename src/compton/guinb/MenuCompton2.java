@@ -11,12 +11,16 @@ import compton.Physics;
 import compton.animation.SinusoidComponent;
 
 import java.awt.*;
+import java.text.NumberFormat;
+import java.text.ParseException;
 
 /**
  *
  * @author Kamil
  */
 public class MenuCompton2 extends javax.swing.JFrame {
+
+    public static MenuCompton2 MAIN_FRAME; // TODO UGLY! way of passing parameters to Sprite
 
     /**
      * Creates new form MenuCompton2
@@ -26,6 +30,7 @@ public class MenuCompton2 extends javax.swing.JFrame {
         panelAnimation.setLayout(new BorderLayout());
         panelAnimation.add(new SinusoidComponent(), BorderLayout.CENTER);
         updateEnergyAfter();
+        MAIN_FRAME = this;
     }
 
     /**
@@ -342,5 +347,27 @@ public class MenuCompton2 extends javax.swing.JFrame {
     private javax.swing.JTextField txtEnergyBefore;
     private javax.swing.JLabel unitDegree;
     private javax.swing.JLabel unitkeV;
+
+    public double getAmplitudeBefore() {
+        return parseDouble(txtEnergyBefore.getText()) * AppConstants.AMP;
+    }
+
+    public double getAngle() {
+        return parseDouble(txtAngle.getText());
+    }
+
+    public double getAmplitudeAfter() {
+        return parseDouble(lblEnergyAfter.getText()) * AppConstants.AMP;
+    }
+
+    private double parseDouble(String sVal){
+        NumberFormat nf = NumberFormat.getInstance();
+        try {
+            return nf.parse(sVal).doubleValue();
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
     // End of variables declaration//GEN-END:variables
 }

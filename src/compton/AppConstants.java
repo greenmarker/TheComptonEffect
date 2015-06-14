@@ -5,6 +5,7 @@ package compton;
  */
 public class AppConstants {
 
-    public static final int DEFAULT_ENERGY_BEFORE = 100;
-    public static final int DEFAULT_ANGLE = 100;
+    public static final int DEFAULT_ENERGY_BEFORE = 500;
+    public static final int DEFAULT_ANGLE = 33;
+    public static final double AMP = 0.2;
 }

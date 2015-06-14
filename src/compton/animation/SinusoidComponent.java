@@ -51,7 +51,7 @@ public class SinusoidComponent extends JPanel {
 
     private Sprite getSprite(){
         if (sprite==null){
-            sprite = new Sprite(50, 45, 10, 2, -getRadius());
+            sprite = new Sprite(-getRadius());
         }
         sprite.setX0(-getRadius());
         return sprite;

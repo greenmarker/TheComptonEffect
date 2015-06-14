@@ -1,5 +1,7 @@
 package compton.animation;
 
+import compton.guinb.MenuCompton2;
+
 import java.awt.*;
 
 /**
@@ -7,9 +9,9 @@ import java.awt.*;
  */
 public class Sprite {
 
-    private int amplitudeBefore = 20; //amplituda przed efektem Comptona
-    private int angle = 45;
-    private int amplitudeAfter = 15; // amplitude after the Compton Effect
+    private double amplitudeBefore = 20; //amplituda przed efektem Comptona
+    private double angle = 45;
+    private double amplitudeAfter = 15; // amplitude after the Compton Effect
     private int frequency = 2;	//częstotliwość
     private int x0;
 
@@ -19,13 +21,20 @@ public class Sprite {
 
 
 
-    public Sprite(int amplitudeBefore, int angle, int amplitudeAfter, int frequency, int x0){
+    public Sprite(int x0){
         super();
-        this.amplitudeBefore = amplitudeBefore;
-        this.angle = angle;
-        this.amplitudeAfter = amplitudeAfter;
-        this.frequency = frequency;
+        tryReadingParameters();
         this.x0 = x0;
+    }
+
+    public void tryReadingParameters(){
+        MenuCompton2 gui = MenuCompton2.MAIN_FRAME;
+        if (gui!=null){
+            // read parameters from Main frame
+            amplitudeBefore = gui.getAmplitudeBefore();
+            angle = gui.getAngle();
+            amplitudeAfter = gui.getAmplitudeAfter();
+        }
     }
 
     public void setX0(int x0){
@@ -97,5 +106,9 @@ public class Sprite {
 
         //Przenies piksel w prawo; Pętla na po lewej stronie po osiągnięciu krawędzi
         x = (++x) % Math.abs(2* x0);
+
+        if (x==0){
+            tryReadingParameters();
+        }
     }
 }
