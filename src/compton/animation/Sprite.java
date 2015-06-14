@@ -8,11 +8,11 @@ import java.awt.*;
 public class Sprite {
 
     private int amplitude = 20; //amplituda
-    private int frequency = 2;	//czêstotliwoœæ
+    private int frequency = 2;	//czÄ™stotliwoÅ›Ä‡
     private int x0;
 
-    private final Dimension size = new Dimension(768, 494);//(szerokoœæ(width),wysokoœæ(height))
-    private int x = 0; //deklaracja x w momencie pocz¹tkowym
+    private final Dimension size = new Dimension(768, 494);//(szerokoÅ›Ä‡(width),wysokoÅ›Ä‡(height))
+    private int x = 0; //deklaracja x w momencie poczÄ…tkowym
     private double y = size.height / 2; //deklaracja y
     private int yBase = 0;
 
@@ -47,13 +47,13 @@ public class Sprite {
 
     public void fotonsinusiod1() {
 
-        //Przenies piksel w prawo; Pêtla na po lewej stronie po osi¹gniêciu krawêdzi
+        //Przenies piksel w prawo; PÄ™tla na po lewej stronie po osiÄ…gniÄ™ciu krawÄ™dzi
         x = (++x) % 376;
 
-        //D³ugoœæ fali = jeden pe³ny panel szerokoœæ podzielona przez czêstotliwoœæ
+        //DÅ‚ugoÅ›Ä‡ fali = jeden peÅ‚ny panel szerokoÅ›Ä‡ podzielona przez czÄ™stotliwoÅ›Ä‡
         final int waveLength = size.width / frequency;
 
-        //Zwiêkszanie yBase; ograniczenie siê przy d³ugoœci fali
+        //ZwiÄ™kszanie yBase; ograniczenie siÄ™ przy dÅ‚ugoÅ›ci fali
         yBase = (++yBase) % waveLength;
 
         //Normalizacja [0..1]
