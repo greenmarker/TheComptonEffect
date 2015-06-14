@@ -265,10 +265,12 @@ public class MenuCompton2 extends javax.swing.JFrame {
     }//GEN-LAST:event_radioIodineItemStateChanged
 
     private void updateEnergyAfter(){
-        double energyBefore = Double.parseDouble(this.txtEnergyBefore.getText());
-        double sourceEnergy = getSourceEnergy(); // TODO check what really should be here
-        double angle = Double.parseDouble(this.txtAngle.getText());
+        double sourceEnergy = getSourceEnergy();
+        // first radioButton is deselected -> sourceEnergy: 0
+        // second radioButton is selected -> sourceEnergy > 0
         if (sourceEnergy >0) {
+            double energyBefore = Double.parseDouble(this.txtEnergyBefore.getText());
+            double angle = Double.parseDouble(this.txtAngle.getText());
             double energyAfter = Physics.getEnergyAfter(energyBefore, sourceEnergy, angle);
             this.lblEnergyAfter.setText(energyAfter + " [keV]");
         }
