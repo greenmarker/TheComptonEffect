@@ -9,7 +9,7 @@ public class Physics {
 
     /**
      * @param e energia fotonu przed rozproszeniem [keV]
-     * @param sourceEnergy masa spoczynkowa elektronu [keV]
+     * @param sourceEnergy energia elektronu [keV]
      * @param fi k¹t rozproszenia fotonu [degrees]
      * @return energia fotonu po rozproszeniu [keV]
      */
