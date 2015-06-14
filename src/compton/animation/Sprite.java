@@ -7,20 +7,23 @@ import java.awt.*;
  */
 public class Sprite {
 
-    private int amplitude = 20; //amplituda
+    private int amplitudeBefore = 20; //amplituda przed efektem Comptona
+    private int angle = 45;
+    private int amplitudeAfter = 15; // amplitude after the Compton Effect
     private int frequency = 2;	//częstotliwość
     private int x0;
 
-    private final Dimension size = new Dimension(768, 494);//(szerokość(width),wysokość(height))
+    //private final Dimension size = new Dimension(768, 494);//(szerokość(width),wysokość(height))
     private int x = 0; //deklaracja x w momencie początkowym
-    private double y = size.height / 2; //deklaracja y
     private int yBase = 0;
 
 
 
-    public Sprite(int amplitude, int frequency, int x0){
+    public Sprite(int amplitudeBefore, int angle, int amplitudeAfter, int frequency, int x0){
         super();
-        this.amplitude = amplitude;
+        this.amplitudeBefore = amplitudeBefore;
+        this.angle = angle;
+        this.amplitudeAfter = amplitudeAfter;
         this.frequency = frequency;
         this.x0 = x0;
     }
@@ -36,41 +39,63 @@ public class Sprite {
             public double f(double x) {
                 return Math.sin(x);
             }
-        }, amplitude, 50, x0 + x);
+        }, amplitudeBefore, angle, amplitudeAfter, 50, x0 + x);
     }
 
-    public void drawFunction(Graphics2D g2, Function f, double amplitude, double wavelength, int mx){
-        Polygon p = new Polygon();
+    /**
+     *
+     * @param g2
+     * @param f
+     * @param amplitudeBefore
+     * @param angle
+     * @param amplitudeAfter
+     * @param wavelength
+     * @param mx end of the wave
+     */
+    public void drawFunction(Graphics2D g2, Function f, double amplitudeBefore, double angle, double amplitudeAfter, double wavelength, int mx){
 
-        for (int x = mx; x <= mx + wavelength; x++) {
-            p.addPoint(x, (int) (amplitude/2 * f.f((x / amplitude) * 2 * Math.PI)));
+        if (mx<0) {
+            Polygon p = new Polygon();
+            int startx = (int)(mx-wavelength);
+            if (startx<x0) startx = x0;
+
+            //System.out.println("mx-wavelength:" + (mx-wavelength) + ", x0:" + x0);
+
+            for (int x = startx; x <= mx; x++) {
+                double amplitude = amplitudeBefore;
+                p.addPoint(x, (int) (amplitude / 2 * f.f((x / amplitude) * 2 * Math.PI)));
+            }
+            g2.setColor(Color.red);
+            g2.drawPolyline(p.xpoints, p.ypoints, p.npoints);
+
+        } else {
+
+            // wave
+            Polygon p = new Polygon();
+            int endx = (int)(mx + wavelength);
+            if (endx>-x0) endx = -x0;
+            for (int x = mx; x <= endx; x++) {
+                double amplitude = amplitudeAfter;
+                p.addPoint(x, (int) (amplitude / 2 * f.f((x / amplitude) * 2 * Math.PI)));
+            }
+            g2.setColor(Color.red);
+            g2.rotate(Math.toRadians(angle), 0, 0);
+            g2.drawPolyline(p.xpoints, p.ypoints, p.npoints);
+            g2.rotate(Math.toRadians(-angle), 0, 0);
+
+            // ball
+            if (mx<-x0-10) {
+                g2.rotate(Math.toRadians(-angle), 0, 0);
+                g2.setColor(Color.RED);//kulka
+                g2.fillOval(mx, (int) 0, 20, 20);
+                g2.rotate(Math.toRadians(angle), 0, 0);
+            }
         }
-        g2.setColor(Color.red);
-        g2.drawPolyline(p.xpoints, p.ypoints, p.npoints);
     }
 
     public void fotonsinusiod1() {
 
         //Przenies piksel w prawo; Pętla na po lewej stronie po osiągnięciu krawędzi
-        x = (++x) % Math.abs(x0);
-
-        //Długość fali = jeden pełny panel szerokość podzielona przez częstotliwość
-        final int waveLength = size.width / frequency;
-
-        //Zwiększanie yBase; ograniczenie się przy długości fali
-        yBase = (++yBase) % waveLength;
-
-        //Normalizacja [0..1]
-        final double normalized = (double)yBase / (double)waveLength;
-
-        //Full wave at 2*pi, means...
-        final double radians = normalized * Math.PI * 2;
-
-        //Getting the sine
-        final double sine = Math.sin(radians);
-
-        //Multiplying with amplitude, add to center position and we have our y
-        y = (int)(sine * amplitude) + size.height/2;
-
+        x = (++x) % Math.abs(2* x0);
     }
 }

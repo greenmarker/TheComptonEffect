@@ -13,10 +13,7 @@ import java.util.TimerTask;
 import javax.swing.JPanel;
 
 
-public class SinusoidComponent extends JPanel
-{
-
-    private final Dimension size = new Dimension(768, 494);//(szerokość(width),wysokość(height))
+public class SinusoidComponent extends JPanel {
 
     private Sprite sprite;
 
@@ -46,12 +43,6 @@ public class SinusoidComponent extends JPanel
         drawBackground(g2);
         drawSprite(g2);
 
-        //g2.setColor(Color.BLACK);//kulka
-        //g2.fillOval(x, (int)y, 20, 20);
-
-        //g2.setColor(Color.BLACK);//kulka
-        //g2.fillOval(x1, (int)y1, 20, 20);
-
         drawElectron(g2);
 
         // restore
@@ -60,7 +51,7 @@ public class SinusoidComponent extends JPanel
 
     private Sprite getSprite(){
         if (sprite==null){
-            sprite = new Sprite(20, 2, -getRadius());
+            sprite = new Sprite(50, 45, 10, 2, -getRadius());
         }
         sprite.setX0(-getRadius());
         return sprite;
@@ -88,6 +79,8 @@ public class SinusoidComponent extends JPanel
 
         int r = getRadius();
 
+//        g2.setColor(Color.WHITE);
+//        g2.fillOval(-r, -r, 2*r, 2*r);
         g2.setColor(Color.GRAY);
         g2.drawOval(-r, -r, 2*r, 2*r);
 
@@ -110,6 +103,8 @@ public class SinusoidComponent extends JPanel
         }
 
     }
+
+
 
     public static class Repainter extends TimerTask {
 
