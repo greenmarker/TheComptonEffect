@@ -25,12 +25,12 @@ public class SinusoidComponent extends JPanel
     private double y = size.height / 2; //deklaracja y 
     private int yBase = 0;
 
-    private int amplitude1 = 20; //amplituda
-    private int frequency1 = 5;	//częstotliwość
-
-    private int x1 = 412; //deklaracja x w momencie początkowym
-    private double y1 = size.height / 2; //deklaracja y
-    private int yBase1 = 0;
+//    private int amplitude1 = 20; //amplituda
+//    private int frequency1 = 5;	//częstotliwość
+//
+//    private int x1 = 412; //deklaracja x w momencie początkowym
+//    private double y1 = size.height / 2; //deklaracja y
+//    private int yBase1 = 0;
 
 
     public SinusoidComponent() {
@@ -156,35 +156,35 @@ public class SinusoidComponent extends JPanel
     	
     }
 
-    public void fotonsinusiod2() {
-
-        //Przenies piksel w prawo; Pętla na po lewej stronie po osiągnięciu krawędzi
-        x1 = (++x1) % size.width;
-
-        //Długość fali = jeden pełny panel szerokość podzielona przez częstotliwość
-        final int waveLength = size.width / frequency1;
-
-        //Zwiększanie yBase; ograniczenie się przy długości fali
-        yBase1 = (++yBase1) % waveLength;
-
-        //Normalizacja [0..1]
-        final double normalized = (double)yBase1 / (double)waveLength;
-
-        //Full wave at 2*pi, means...
-        final double radians = normalized * Math.PI * 2;
-
-        final double kol = Math.sqrt(2) ;
-        
-        //Getting the sine
-        final double sine =  Math.sin(radians);
-        //final double sin2e = kol*Math.sin(radians);
-        
-        
-
-        //Multiplying with amplitude, add to center position and we have our y
-        y1 = (int)(sine * amplitude1) + (amplitude1*radians) + size.height/2  ;
-
-    }
+//    public void fotonsinusiod2() {
+//
+//        //Przenies piksel w prawo; Pętla na po lewej stronie po osiągnięciu krawędzi
+//        x1 = (++x1) % size.width;
+//
+//        //Długość fali = jeden pełny panel szerokość podzielona przez częstotliwość
+//        final int waveLength = size.width / frequency1;
+//
+//        //Zwiększanie yBase; ograniczenie się przy długości fali
+//        yBase1 = (++yBase1) % waveLength;
+//
+//        //Normalizacja [0..1]
+//        final double normalized = (double)yBase1 / (double)waveLength;
+//
+//        //Full wave at 2*pi, means...
+//        final double radians = normalized * Math.PI * 2;
+//
+//        final double kol = Math.sqrt(2) ;
+//
+//        //Getting the sine
+//        final double sine =  Math.sin(radians);
+//        //final double sin2e = kol*Math.sin(radians);
+//
+//
+//
+//        //Multiplying with amplitude, add to center position and we have our y
+//        y1 = (int)(sine * amplitude1) + (amplitude1*radians) + size.height/2  ;
+//
+//    }
 
     public static class Sinusoider extends TimerTask {
 
@@ -197,7 +197,7 @@ public class SinusoidComponent extends JPanel
         @Override
         public void run() {
             panel.fotonsinusiod1();
-            panel.fotonsinusiod2();
+            //panel.fotonsinusiod2();
         }
 
     }
