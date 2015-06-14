@@ -25,6 +25,7 @@ public class MenuCompton2 extends javax.swing.JFrame {
         initComponents();
         panelAnimation.setLayout(new BorderLayout());
         panelAnimation.add(new SinusoidComponent(), BorderLayout.CENTER);
+        updateEnergyAfter();
     }
 
     /**
@@ -41,10 +42,10 @@ public class MenuCompton2 extends javax.swing.JFrame {
         labelEnergyBefore = new javax.swing.JLabel();
         labelAngle = new javax.swing.JLabel();
         labelEnergyAfter = new javax.swing.JLabel();
+        lblEnergyAfter = new javax.swing.JLabel();
         labelSource = new javax.swing.JLabel();
         txtEnergyBefore = new javax.swing.JTextField();
         txtAngle = new javax.swing.JTextField();
-        txtEnergyAfter = new javax.swing.JTextField();
         radioCaesium = new javax.swing.JRadioButton();
         radioIodine = new javax.swing.JRadioButton();
         sliderEnergyBefore = new javax.swing.JSlider();
@@ -66,8 +67,12 @@ public class MenuCompton2 extends javax.swing.JFrame {
 
         labelEnergyAfter.setText(bundle.getString("parameter_energy_after_dissipation")); // NOI18N
 
+        lblEnergyAfter.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblEnergyAfter.setText("1.023 [keV]");
+
         labelSource.setText(bundle.getString("sample_sources")); // NOI18N
 
+        txtEnergyBefore.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txtEnergyBefore.setText(AppConstants.DEFAULT_ENERGY_BEFORE + "");
         txtEnergyBefore.setToolTipText(bundle.getString("parameter_energy")); // NOI18N
         txtEnergyBefore.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -76,6 +81,7 @@ public class MenuCompton2 extends javax.swing.JFrame {
             }
         });
 
+        txtAngle.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txtAngle.setText(AppConstants.DEFAULT_ANGLE + "");
         txtAngle.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -83,14 +89,22 @@ public class MenuCompton2 extends javax.swing.JFrame {
             }
         });
 
-        txtEnergyAfter.setEditable(false);
-
         source.add(radioCaesium);
         radioCaesium.setSelected(true);
         radioCaesium.setText(bundle.getString("caesium")); // NOI18N
+        radioCaesium.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                radioCaesiumItemStateChanged(evt);
+            }
+        });
 
         source.add(radioIodine);
         radioIodine.setText(bundle.getString("iodine")); // NOI18N
+        radioIodine.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                radioIodineItemStateChanged(evt);
+            }
+        });
 
         sliderEnergyBefore.setMajorTickSpacing(1000);
         sliderEnergyBefore.setMaximum(1000);
@@ -133,20 +147,20 @@ public class MenuCompton2 extends javax.swing.JFrame {
                         .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(radioIodine)
                             .addComponent(radioCaesium))
-                        .addGap(0, 654, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(panelParametersLayout.createSequentialGroup()
-                        .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEnergyBefore)
-                            .addComponent(txtAngle)
-                            .addComponent(txtEnergyAfter, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblEnergyAfter, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtEnergyBefore, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(txtAngle, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(unitkeV)
                             .addComponent(unitDegree))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sliderEnergyBefore, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
-                            .addComponent(sliderAngle, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)))))
+                            .addComponent(sliderEnergyBefore, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)
+                            .addComponent(sliderAngle, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)))))
         );
         panelParametersLayout.setVerticalGroup(
             panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,10 +178,10 @@ public class MenuCompton2 extends javax.swing.JFrame {
                         .addComponent(labelAngle)
                         .addComponent(unitDegree))
                     .addComponent(sliderAngle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
+                .addGap(9, 9, 9)
                 .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEnergyAfter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelEnergyAfter))
+                    .addComponent(labelEnergyAfter)
+                    .addComponent(lblEnergyAfter))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelSource)
@@ -187,7 +201,7 @@ public class MenuCompton2 extends javax.swing.JFrame {
         );
         panelAnimationLayout.setVerticalGroup(
             panelAnimationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 474, Short.MAX_VALUE)
+            .addGap(0, 477, Short.MAX_VALUE)
         );
 
         jMenu1.setText("File");
@@ -242,12 +256,22 @@ public class MenuCompton2 extends javax.swing.JFrame {
         updateEnergyAfter();
     }//GEN-LAST:event_txtAngleKeyReleased
 
+    private void radioCaesiumItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radioCaesiumItemStateChanged
+        updateEnergyAfter();
+    }//GEN-LAST:event_radioCaesiumItemStateChanged
+
+    private void radioIodineItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radioIodineItemStateChanged
+        updateEnergyAfter();
+    }//GEN-LAST:event_radioIodineItemStateChanged
+
     private void updateEnergyAfter(){
         double energyBefore = Double.parseDouble(this.txtEnergyBefore.getText());
-        double electronMass = getSourceEnergy(); // TODO check what really should be here
+        double sourceEnergy = getSourceEnergy(); // TODO check what really should be here
         double angle = Double.parseDouble(this.txtAngle.getText());
-        double energyAfter = Physics.getEnergyAfter(energyBefore, electronMass, angle);
-        this.txtEnergyAfter.setText(energyAfter + "");
+        if (sourceEnergy >0) {
+            double energyAfter = Physics.getEnergyAfter(energyBefore, sourceEnergy, angle);
+            this.lblEnergyAfter.setText(energyAfter + " [keV]");
+        }
     }
 
     private int getSourceEnergy(){
@@ -257,7 +281,8 @@ public class MenuCompton2 extends javax.swing.JFrame {
         } else if (radioIodine.isSelected()){
             return 364;
         }
-        throw new RuntimeException("None of listed atoms was selected: "); // this would be a programmers error
+        //throw new RuntimeException("None of listed atoms was selected: "); // this would be a programmers error
+        return 0;
     }
     
     /**
@@ -303,6 +328,7 @@ public class MenuCompton2 extends javax.swing.JFrame {
     private javax.swing.JLabel labelEnergyAfter;
     private javax.swing.JLabel labelEnergyBefore;
     private javax.swing.JLabel labelSource;
+    private javax.swing.JLabel lblEnergyAfter;
     private javax.swing.JPanel panelAnimation;
     private javax.swing.JPanel panelParameters;
     private javax.swing.JRadioButton radioCaesium;
@@ -311,7 +337,6 @@ public class MenuCompton2 extends javax.swing.JFrame {
     private javax.swing.JSlider sliderEnergyBefore;
     private javax.swing.ButtonGroup source;
     private javax.swing.JTextField txtAngle;
-    private javax.swing.JTextField txtEnergyAfter;
     private javax.swing.JTextField txtEnergyBefore;
     private javax.swing.JLabel unitDegree;
     private javax.swing.JLabel unitkeV;
