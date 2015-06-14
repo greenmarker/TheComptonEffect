@@ -69,7 +69,7 @@ public class SinusoidComponent extends JPanel
 			public double f(double x) {
 				return Math.sin(x);
 			}
-             }, amplitude, 50, x - getWidth()/2, 0);
+             }, amplitude, 50, x - getRadius(), 0);
 
         drawElectron(g2);
 
