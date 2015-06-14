@@ -5,17 +5,19 @@ package compton;
  */
 public class Physics {
 
-    public static final int C = 0; // speed of light
+    public static final int C = 299_792_458; // m/s speed of light
 
     /**
-     * The Klein-Nishin formula
-     *
-     * @param e energia fotonu przed rozproszeniem
-     * @param me masa spoczynkowa elektronu
-     * @param fi k¹t rozproszenia fotonu
-     * @return energia fotonu po rozproszeniu
+     * @param e energia fotonu przed rozproszeniem [keV]
+     * @param sourceEnergy masa spoczynkowa elektronu [keV]
+     * @param fi k¹t rozproszenia fotonu [degrees]
+     * @return energia fotonu po rozproszeniu [keV]
      */
-    public static double getEnergyAfter(double e, double me, double fi){
-        return e / (1 + (e/(me*C*C)) * (1-Math.cos(fi)) );
+    public static double getEnergyAfter(double e, double sourceEnergy, double fi){
+        // The Klein-Nishin formula
+        double licznik = e*(1- Math.cos(Math.toRadians(fi)));
+        double energyAfter = e / (1 + (licznik/sourceEnergy) );
+        System.out.println("e:" + e + ", sourceEnergy:" + sourceEnergy + ", fi:" + fi + ",    licznik: " + licznik);
+        return energyAfter;
     }
 }
