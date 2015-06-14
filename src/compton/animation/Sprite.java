@@ -25,6 +25,10 @@ public class Sprite {
         this.x0 = x0;
     }
 
+    public void setX0(int x0){
+        this.x0 = x0;
+    }
+
     public void paintComponent(Graphics2D g2) {
         //System.out.println("x0:" + x0 + ", x:" + x);
         drawFunction(g2, new Function(){
@@ -48,7 +52,7 @@ public class Sprite {
     public void fotonsinusiod1() {
 
         //Przenies piksel w prawo; Pętla na po lewej stronie po osiągnięciu krawędzi
-        x = (++x) % 376;
+        x = (++x) % Math.abs(x0);
 
         //Długość fali = jeden pełny panel szerokość podzielona przez częstotliwość
         final int waveLength = size.width / frequency;
