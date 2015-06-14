@@ -12,8 +12,6 @@ import java.util.TimerTask;
 
 import javax.swing.JPanel;
 
-import compton.animation.Function;
-
 
 public class SinusoidComponent extends JPanel
 {
@@ -52,18 +50,12 @@ public class SinusoidComponent extends JPanel
     }
 
     @Override
-    protected void paintComponent(final Graphics g) //rysowanie
-    {
-
+    protected void paintComponent(final Graphics g) { //rysowanie
         final Graphics2D g2 = (Graphics2D)g;
-
-        clear(g2);
-
-        //drawChart(g2);
 
         g2.translate(getWidth() / 2, getHeight() / 2);
 
-        drawSquare(g2);
+        drawBackground(g2);
 
 
         //g2.setColor(Color.BLACK);//kulka
@@ -93,16 +85,14 @@ public class SinusoidComponent extends JPanel
         g2.drawOval(-re, -re, 2*re, 2*re);
     }
 
-    private void clear(Graphics2D g2) {
-        g2.setColor(Color.WHITE);//obszar animacji
-        g2.fillRect(0, 0, getWidth(), getHeight());
-    }
-
     private int getRadius(){
         return Math.min(getWidth(), getHeight())/2;
     }
 
-    private void drawSquare(Graphics2D g2){
+    private void drawBackground(Graphics2D g2){
+        g2.setColor(Color.WHITE);//obszar animacji
+        g2.fillRect(-getWidth()/2, -getHeight()/2, getWidth(), getHeight());
+
         int r = getRadius();
 
         g2.setColor(Color.GRAY);
@@ -111,27 +101,6 @@ public class SinusoidComponent extends JPanel
         g2.setColor(new Color(210, 210, 210));
         g2.drawLine(0, -r, 0, r); //  |
         g2.drawLine(-r, 0, r, 0); // ---
-    }
-
-    @Deprecated
-    private void drawChart(Graphics2D g2){
-        g2.setColor(Color.BLACK);
-        g2.drawOval(393, 246, 20, 20);
-
-        g2.setColor(Color.BLACK);
-        g2.drawLine (403,0, 403, 246);
-
-        g2.setColor(Color.BLACK);
-        g2.drawLine (403,266, 403, 494);
-
-        g2.setColor(Color.BLACK);
-        g2.drawLine (0,256, 392, 256);
-
-        g2.setColor(Color.BLACK);
-        g2.drawLine (414,256, 985, 256);
-
-        g2.setColor(Color.BLACK);
-        g2.drawLine (398,256, 408, 256);
     }
     
     public void drawFunction(Graphics2D g2, Function f, double amplitude, double wavelength, int mx, int my){
