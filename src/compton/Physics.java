@@ -17,7 +17,7 @@ public class Physics {
         // The Klein-Nishin formula
         double licznik = e*(1- Math.cos(Math.toRadians(fi)));
         double energyAfter = e / (1 + (licznik/sourceEnergy) );
-        System.out.println("e:" + e + ", sourceEnergy:" + sourceEnergy + ", fi:" + fi + ",    licznik: " + licznik);
+        //System.out.println("e:" + e + ", sourceEnergy:" + sourceEnergy + ", fi:" + fi + ",    licznik: " + licznik);
         return energyAfter;
     }
 }
