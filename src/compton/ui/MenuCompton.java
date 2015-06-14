@@ -1,6 +1,8 @@
 package compton.ui;
 
 import compton.animation.SinusoidComponent;
+
+import java.awt.*;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 import java.util.Timer;
@@ -41,6 +43,15 @@ public class MenuCompton extends JFrame {
 		SinusoidComponent sinusoid = new SinusoidComponent();
 		JPanel animationPanel = new JPanel(new MigLayout());
 		animationPanel.add(sinusoid);
+
+		Dimension size = new Dimension(768, 494);//(szerokość(width),wysokość(height))
+		animationPanel.setPreferredSize(size);
+		animationPanel.setMinimumSize(size);
+		animationPanel.setMaximumSize(size);
+		sinusoid.setPreferredSize(size);
+		sinusoid.setMinimumSize(size);
+		sinusoid.setMaximumSize(size);
+
 		return animationPanel;
 	}
 }
