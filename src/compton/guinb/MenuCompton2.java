@@ -62,7 +62,11 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
         panelAnimation = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(242, 242, 242));
@@ -211,11 +215,31 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
             .addGap(0, 477, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("File");
+        jMenu1.setText("Plik");
+        jMenu1.setActionCommand("");
+
+        jMenuItem3.setText("Wyjście");
+        jMenu1.add(jMenuItem3);
+
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Zjawisko Comptona");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Język");
+
+        jMenuItem1.setText("Polski");
+        jMenu3.add(jMenuItem1);
+
+        jMenuItem2.setText("Angielski");
+        jMenu3.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -270,6 +294,10 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
     private void radioIodineItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radioIodineItemStateChanged
         updateEnergyAfter();
     }//GEN-LAST:event_radioIodineItemStateChanged
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        new Description();
+    }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void updateEnergyAfter(){
         double sourceEnergy = getSourceEnergy();
@@ -332,7 +360,11 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JLabel labelAngle;
     private javax.swing.JLabel labelEnergyAfter;
     private javax.swing.JLabel labelEnergyBefore;
@@ -349,27 +381,5 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
     private javax.swing.JTextField txtEnergyBefore;
     private javax.swing.JLabel unitDegree;
     private javax.swing.JLabel unitkeV;
-
-    public double getAmplitudeBefore() {
-        return parseDouble(txtEnergyBefore.getText()) * AppConstants.AMP;
-    }
-
-    public double getAngle() {
-        return parseDouble(txtAngle.getText());
-    }
-
-    public double getAmplitudeAfter() {
-        return parseDouble(lblEnergyAfter.getText()) * AppConstants.AMP;
-    }
-
-    private double parseDouble(String sVal){
-        NumberFormat nf = NumberFormat.getInstance();
-        try {
-            return nf.parse(sVal).doubleValue();
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return 0;
-        }
-    }
     // End of variables declaration//GEN-END:variables
 }
