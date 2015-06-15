@@ -1,5 +1,6 @@
 package compton.ui;
 
+import compton.IParamsSource;
 import compton.animation.SinusoidComponent;
 
 import java.awt.*;
@@ -12,7 +13,7 @@ import javax.swing.*;
 import net.miginfocom.swing.MigLayout;
 
 
-public class MenuCompton extends JFrame {
+public class MenuCompton extends JFrame implements IParamsSource {
 	final ResourceBundle bundle = PropertyResourceBundle.getBundle("compton");
 
 	public MenuCompton() {
@@ -53,5 +54,20 @@ public class MenuCompton extends JFrame {
 		sinusoid.setMaximumSize(size);
 
 		return animationPanel;
+	}
+
+	@Override
+	public double getAmplitudeBefore() {
+		return 0;
+	}
+
+	@Override
+	public double getAngle() {
+		return 0;
+	}
+
+	@Override
+	public double getAmplitudeAfter() {
+		return 0;
 	}
 }

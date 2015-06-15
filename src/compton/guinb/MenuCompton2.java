@@ -7,9 +7,11 @@ package compton.guinb;
  */
 
 import compton.AppConstants;
+import compton.IParamsSource;
 import compton.Physics;
 import compton.animation.SinusoidComponent;
 
+import javax.swing.*;
 import java.awt.*;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -18,7 +20,7 @@ import java.text.ParseException;
  *
  * @author Kamil
  */
-public class MenuCompton2 extends javax.swing.JFrame {
+public class MenuCompton2 extends JFrame implements IParamsSource {
 
     public static MenuCompton2 MAIN_FRAME; // TODO UGLY! way of passing parameters to Sprite
 
