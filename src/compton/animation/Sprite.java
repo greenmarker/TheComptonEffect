@@ -1,5 +1,6 @@
 package compton.animation;
 
+import compton.AppConstants;
 import compton.guinb.MenuCompton2;
 
 import java.awt.*;
@@ -9,9 +10,8 @@ import java.awt.*;
  */
 public class Sprite {
 
-    private double amplitudeBefore = 20; //amplituda przed efektem Comptona
+    private double amplitudeBefore = AppConstants.AMPLITUDE; //amplituda przed efektem Comptona
     private double angle = 45;
-    private double amplitudeAfter = 15; // amplitude after the Compton Effect
     private int frequency = 2;	//częstotliwość
     private int x0;
 
@@ -31,9 +31,7 @@ public class Sprite {
         MenuCompton2 gui = MenuCompton2.MAIN_FRAME;
         if (gui!=null){
             // read parameters from Main frame
-            amplitudeBefore = gui.getAmplitudeBefore();
             angle = gui.getAngle();
-            amplitudeAfter = gui.getAmplitudeAfter();
         }
     }
 
@@ -48,7 +46,7 @@ public class Sprite {
             public double f(double x) {
                 return Math.sin(x);
             }
-        }, amplitudeBefore, angle, amplitudeAfter, 50, x0 + x);
+        }, amplitudeBefore, angle, 50, x0 + x);
     }
 
     /**
@@ -57,18 +55,15 @@ public class Sprite {
      * @param f
      * @param amplitudeBefore
      * @param angle
-     * @param amplitudeAfter
      * @param wavelength
      * @param mx end of the wave
      */
-    public void drawFunction(Graphics2D g2, Function f, double amplitudeBefore, double angle, double amplitudeAfter, double wavelength, int mx){
-
+    public void drawFunction(Graphics2D g2, Function f, double amplitudeBefore, double angle, double wavelength, int mx){
+        System.out.println("mx:"+mx);
         if (mx<0) {
             Polygon p = new Polygon();
             int startx = (int)(mx-wavelength);
             if (startx<x0) startx = x0;
-
-            //System.out.println("mx-wavelength:" + (mx-wavelength) + ", x0:" + x0);
 
             for (int x = startx; x <= mx; x++) {
                 double amplitude = amplitudeBefore;
@@ -84,7 +79,7 @@ public class Sprite {
             int endx = (int)(mx + wavelength);
             if (endx>-x0) endx = -x0;
             for (int x = mx; x <= endx; x++) {
-                double amplitude = amplitudeAfter;
+                double amplitude = amplitudeBefore;
                 p.addPoint(x, (int) (amplitude / 2 * f.f((x / amplitude) * 2 * Math.PI)));
             }
             g2.setColor(Color.red);
