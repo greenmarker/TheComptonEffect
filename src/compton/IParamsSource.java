@@ -8,9 +8,5 @@ import java.text.ParseException;
  */
 public interface IParamsSource {
 
-    double getAmplitudeBefore();
-
     double getAngle();
-
-    double getAmplitudeAfter();
 }
