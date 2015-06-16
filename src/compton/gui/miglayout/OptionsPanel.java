@@ -9,6 +9,7 @@ import java.util.Hashtable;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -47,6 +48,7 @@ public class OptionsPanel extends JPanel {
 	JRadioButton sourceCez = new JRadioButton(bundle.getString("caesium"));
 	JRadioButton sourceJod = new JRadioButton(bundle.getString("iodine"));
 	//JRadioButton sourceUran = new JRadioButton(bundle.getString("uranium"));
+	ButtonGroup sources = new ButtonGroup();
 
 	public OptionsPanel() {
 		optionPanel.add(optionTitle, "wrap");
@@ -119,9 +121,16 @@ public class OptionsPanel extends JPanel {
             }
 		};
 		
+		// ktorys z radioButtonow powinien byc domyslnie wybrany
+		sourceCez.setSelected(true);
+		
 		sourceCez.addItemListener(radioItemListener);
 		sourceJod.addItemListener(radioItemListener);
 		//sourceUran.addItemListener(radioItemListener);
+		
+		sources.add(sourceCez);
+		sources.add(sourceJod);
+		//sources.add(sourceUran);
 		
 		updateEnergyAfter();
 	}
