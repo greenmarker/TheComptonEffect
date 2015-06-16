@@ -7,6 +7,7 @@ package compton.gui.netbeans;
  */
 import static compton.utils.Utils.*;
 import compton.AppConstants;
+import compton.gui.GuiReferenceHolder;
 import compton.gui.IParamsSource;
 import compton.utils.Physics;
 import compton.gui.common.MenuBuilder;
@@ -22,8 +23,6 @@ import java.awt.*;
  */
 public class MenuCompton2 extends JFrame implements IParamsSource {
 
-    public static MenuCompton2 MAIN_FRAME; // TODO UGLY! way of passing parameters to Sprite
-
     /**
      * Creates new form MenuCompton2
      */
@@ -32,7 +31,7 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
         panelAnimation.setLayout(new BorderLayout());
         panelAnimation.add(new SinusoidComponent(), BorderLayout.CENTER);
         updateEnergyAfter();
-        MAIN_FRAME = this;
+        GuiReferenceHolder.gui = this;
     }
 
     /**

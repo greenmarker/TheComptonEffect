@@ -1,5 +1,6 @@
 package compton.gui.miglayout;
 
+import compton.gui.GuiReferenceHolder;
 import compton.gui.IParamsSource;
 import compton.gui.common.animation.SinusoidComponent;
 
@@ -14,22 +15,24 @@ import net.miginfocom.swing.MigLayout;
 
 
 public class MenuCompton extends JFrame implements IParamsSource {
-	final ResourceBundle bundle = PropertyResourceBundle.getBundle("compton");
+	final static ResourceBundle bundle = PropertyResourceBundle.getBundle("compton");
 
 	OptionsPanel optionsPanel = new OptionsPanel(); // we'll need reference, because we need to return Angle from it
 
+	//Ramka Główna
 	public MenuCompton() {
-		//Ramka Główna
-		JFrame mainFrame = new JFrame(bundle.getString("app_title")); //Ramka Główna
-		mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE); // zamykanie ramki
-		mainFrame.setResizable(false);	//skalowanie ramki przez użytkownika
-		mainFrame.setVisible(true); //wywołanie ramki
-		mainFrame.setSize (800, 800); //rozmiar
-		mainFrame.setLayout(new MigLayout());
-		mainFrame.add(createMenu(),  "north");
-		mainFrame.add(createAnimationPanel(), "center");
-		mainFrame.add(optionsPanel,"west,south");
-		mainFrame.setVisible(true);
+		super(bundle.getString("app_title")); //Ramka Główna
+		GuiReferenceHolder.gui = this;
+		
+		setDefaultCloseOperation(EXIT_ON_CLOSE); // zamykanie ramki
+		setResizable(false);	//skalowanie ramki przez użytkownika
+		setVisible(true); //wywołanie ramki
+		setSize (800, 800); //rozmiar
+		setLayout(new MigLayout());
+		add(createMenu(),  "north");
+		add(createAnimationPanel(), "center");
+		add(optionsPanel,"west,south");
+		setVisible(true);
 	}
 
 	private JPanel createMenu(){
