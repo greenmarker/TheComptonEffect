@@ -258,7 +258,7 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
     }//GEN-LAST:event_sliderAngleStateChanged
 
     private void txtEnergyBeforeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEnergyBeforeKeyReleased
-        this.sliderEnergyBefore.setValue(Integer.parseInt(this.txtAngle.getText()));
+        this.sliderEnergyBefore.setValue(Integer.parseInt(this.txtEnergyBefore.getText()));
         updateEnergyAfter();
     }//GEN-LAST:event_txtEnergyBeforeKeyReleased
 
@@ -292,7 +292,6 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
     }
 
     private double getSourceEnergy(){
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("compton");
         if (radioCaesium.isSelected()){
             return 662;
         } else if (radioIodine.isSelected()){
@@ -300,7 +299,6 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
         } else if (radioUranium.isSelected()){
             return 57.7;
         }
-        //throw new RuntimeException("None of listed atoms was selected: "); // this would be a programmers error
         return 0;
     }
     
