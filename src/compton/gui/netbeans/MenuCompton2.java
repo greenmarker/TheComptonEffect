@@ -7,6 +7,7 @@ package compton.gui.netbeans;
  */
 import static compton.utils.Utils.*;
 import compton.AppConstants;
+import compton.gui.GuiReferenceHolder;
 import compton.gui.IParamsSource;
 import compton.utils.Physics;
 import compton.gui.common.MenuBuilder;
@@ -22,8 +23,6 @@ import java.awt.*;
  */
 public class MenuCompton2 extends JFrame implements IParamsSource {
 
-    public static MenuCompton2 MAIN_FRAME; // TODO UGLY! way of passing parameters to Sprite
-
     /**
      * Creates new form MenuCompton2
      */
@@ -32,7 +31,7 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
         panelAnimation.setLayout(new BorderLayout());
         panelAnimation.add(new SinusoidComponent(), BorderLayout.CENTER);
         updateEnergyAfter();
-        MAIN_FRAME = this;
+        GuiReferenceHolder.gui = this;
     }
 
     /**
@@ -258,7 +257,7 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
     }//GEN-LAST:event_sliderAngleStateChanged
 
     private void txtEnergyBeforeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEnergyBeforeKeyReleased
-        this.sliderEnergyBefore.setValue(Integer.parseInt(this.txtAngle.getText()));
+        this.sliderEnergyBefore.setValue(Integer.parseInt(this.txtEnergyBefore.getText()));
         updateEnergyAfter();
     }//GEN-LAST:event_txtEnergyBeforeKeyReleased
 
@@ -292,7 +291,6 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
     }
 
     private double getSourceEnergy(){
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("compton");
         if (radioCaesium.isSelected()){
             return 662;
         } else if (radioIodine.isSelected()){
@@ -300,7 +298,6 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
         } else if (radioUranium.isSelected()){
             return 57.7;
         }
-        //throw new RuntimeException("None of listed atoms was selected: "); // this would be a programmers error
         return 0;
     }
     

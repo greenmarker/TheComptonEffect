@@ -1,9 +1,12 @@
 package compton.gui.common.animation;
 
-import compton.AppConstants;
-import compton.gui.netbeans.MenuCompton2;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
 
-import java.awt.*;
+import compton.AppConstants;
+import compton.gui.GuiReferenceHolder;
+import compton.gui.IParamsSource;
 
 /**
  * Created by Kamil on 2015-06-14.
@@ -28,7 +31,7 @@ public class Sprite {
     }
 
     public void tryReadingParameters(){
-        MenuCompton2 gui = MenuCompton2.MAIN_FRAME;
+    	IParamsSource gui = GuiReferenceHolder.gui;
         if (gui!=null){
             // read parameters from Main frame
             angle = gui.getAngle();
