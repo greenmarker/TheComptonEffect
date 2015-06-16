@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 public class SinusoidComponent extends JPanel {
 
-    private Sprite sprite;
+    private Sinusoid sinusoid;
 
     public SinusoidComponent() {
         super(true);
@@ -47,16 +47,16 @@ public class SinusoidComponent extends JPanel {
         g2.translate(getWidth() / 2, getHeight() / 2);
     }
 
-    private Sprite getSprite(){
-        if (sprite==null){
-            sprite = new Sprite(-getRadius());
+    private Sinusoid getSinusoid(){
+        if (sinusoid ==null){
+            sinusoid = new Sinusoid(-getRadius());
         }
-        sprite.setX0(-getRadius());
-        return sprite;
+        sinusoid.setX0(-getRadius());
+        return sinusoid;
     }
 
     private void drawSprite(Graphics2D g2){
-        getSprite().paintComponent(g2);
+        getSinusoid().paintComponent(g2);
     }
 
     private void drawElectron(Graphics2D g2) {
@@ -95,7 +95,7 @@ public class SinusoidComponent extends JPanel {
 
         @Override
         public void run() {
-            panel.getSprite().fotonsinusiod1();
+            panel.getSinusoid().fotonsinusiod1();
         }
 
     }
