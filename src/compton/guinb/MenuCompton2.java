@@ -5,6 +5,7 @@ package compton.guinb;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import static compton.utils.Utils.*;
 
 import compton.AppConstants;
 import compton.IParamsSource;
@@ -13,8 +14,6 @@ import compton.animation.SinusoidComponent;
 
 import javax.swing.*;
 import java.awt.*;
-import java.text.NumberFormat;
-import java.text.ParseException;
 
 /**
  *
@@ -59,6 +58,7 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
         sliderAngle = new javax.swing.JSlider();
         unitkeV = new javax.swing.JLabel();
         unitDegree = new javax.swing.JLabel();
+        radioUranium = new javax.swing.JRadioButton();
         panelAnimation = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -141,6 +141,8 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
 
         unitDegree.setText(bundle.getString("unit_degree")); // NOI18N
 
+        radioUranium.setText(bundle.getString("uranium")); // NOI18N
+
         javax.swing.GroupLayout panelParametersLayout = new javax.swing.GroupLayout(panelParameters);
         panelParameters.setLayout(panelParametersLayout);
         panelParametersLayout.setHorizontalGroup(
@@ -155,11 +157,6 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelParametersLayout.createSequentialGroup()
-                        .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(radioIodine)
-                            .addComponent(radioCaesium))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(panelParametersLayout.createSequentialGroup()
                         .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(lblEnergyAfter, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtEnergyBefore, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
@@ -171,7 +168,13 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(sliderEnergyBefore, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)
-                            .addComponent(sliderAngle, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)))))
+                            .addComponent(sliderAngle, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)))
+                    .addGroup(panelParametersLayout.createSequentialGroup()
+                        .addGroup(panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(radioUranium)
+                            .addComponent(radioIodine)
+                            .addComponent(radioCaesium))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         panelParametersLayout.setVerticalGroup(
             panelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,6 +202,8 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
                     .addComponent(radioCaesium))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(radioIodine)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(radioUranium)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -212,7 +217,7 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
         );
         panelAnimationLayout.setVerticalGroup(
             panelAnimationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 477, Short.MAX_VALUE)
+            .addGap(0, 428, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Plik");
@@ -304,8 +309,8 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
         // first radioButton is deselected -> sourceEnergy: 0
         // second radioButton is selected -> sourceEnergy > 0
         if (sourceEnergy >0) {
-            double energyBefore = Double.parseDouble(this.txtEnergyBefore.getText());
-            double angle = Double.parseDouble(this.txtAngle.getText());
+            double energyBefore = parseDouble(this.txtEnergyBefore.getText());
+            double angle = parseDouble(this.txtAngle.getText());
             double energyAfter = Physics.getEnergyAfter(energyBefore, sourceEnergy, angle);
             this.lblEnergyAfter.setText(energyAfter + " [keV]");
         }
@@ -374,6 +379,7 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
     private javax.swing.JPanel panelParameters;
     private javax.swing.JRadioButton radioCaesium;
     private javax.swing.JRadioButton radioIodine;
+    private javax.swing.JRadioButton radioUranium;
     private javax.swing.JSlider sliderAngle;
     private javax.swing.JSlider sliderEnergyBefore;
     private javax.swing.ButtonGroup source;
@@ -382,4 +388,9 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
     private javax.swing.JLabel unitDegree;
     private javax.swing.JLabel unitkeV;
     // End of variables declaration//GEN-END:variables
+
+	@Override
+	public double getAngle() {
+		return parseDouble(txtAngle.getText());
+	}
 }

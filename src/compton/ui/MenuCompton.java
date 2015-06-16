@@ -57,17 +57,7 @@ public class MenuCompton extends JFrame implements IParamsSource {
 	}
 
 	@Override
-	public double getAmplitudeBefore() {
-		return 0;
-	}
-
-	@Override
 	public double getAngle() {
-		return 0;
-	}
-
-	@Override
-	public double getAmplitudeAfter() {
 		return 0;
 	}
 }
