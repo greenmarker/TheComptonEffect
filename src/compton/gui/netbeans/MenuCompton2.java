@@ -44,7 +44,7 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        source = new javax.swing.ButtonGroup();
+        sources = new javax.swing.ButtonGroup();
         panelParameters = new javax.swing.JPanel();
         labelEnergyBefore = new javax.swing.JLabel();
         labelAngle = new javax.swing.JLabel();
@@ -61,7 +61,7 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
         unitDegree = new javax.swing.JLabel();
         radioUranium = new javax.swing.JRadioButton();
         panelAnimation = new javax.swing.JPanel();
-        jMenuBar1 = new MenuBuilder().build();
+        jMenuBar = new MenuBuilder().build();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(242, 242, 242));
@@ -95,7 +95,7 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
             }
         });
 
-        source.add(radioCaesium);
+        sources.add(radioCaesium);
         radioCaesium.setSelected(true);
         radioCaesium.setText(bundle.getString("caesium")); // NOI18N
         radioCaesium.addItemListener(new java.awt.event.ItemListener() {
@@ -104,7 +104,7 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
             }
         });
 
-        source.add(radioIodine);
+        sources.add(radioIodine);
         radioIodine.setText(bundle.getString("iodine")); // NOI18N
         radioIodine.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -136,7 +136,13 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
 
         unitDegree.setText(bundle.getString("unit_degree")); // NOI18N
 
+        sources.add(radioUranium);
         radioUranium.setText(bundle.getString("uranium")); // NOI18N
+        radioUranium.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                radioUraniumItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelParametersLayout = new javax.swing.GroupLayout(panelParameters);
         panelParameters.setLayout(panelParametersLayout);
@@ -215,7 +221,7 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
             .addGap(0, 476, Short.MAX_VALUE)
         );
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -269,6 +275,10 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
         updateEnergyAfter();
     }//GEN-LAST:event_radioIodineItemStateChanged
 
+    private void radioUraniumItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radioUraniumItemStateChanged
+        updateEnergyAfter();
+    }//GEN-LAST:event_radioUraniumItemStateChanged
+
     private void updateEnergyAfter(){
         double sourceEnergy = getSourceEnergy();
         // first radioButton is deselected -> sourceEnergy: 0
@@ -281,12 +291,14 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
         }
     }
 
-    private int getSourceEnergy(){
+    private double getSourceEnergy(){
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("compton");
         if (radioCaesium.isSelected()){
             return 662;
         } else if (radioIodine.isSelected()){
             return 364;
+        } else if (radioUranium.isSelected()){
+            return 57.7;
         }
         //throw new RuntimeException("None of listed atoms was selected: "); // this would be a programmers error
         return 0;
@@ -328,7 +340,7 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JLabel labelAngle;
     private javax.swing.JLabel labelEnergyAfter;
     private javax.swing.JLabel labelEnergyBefore;
@@ -341,7 +353,7 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
     private javax.swing.JRadioButton radioUranium;
     private javax.swing.JSlider sliderAngle;
     private javax.swing.JSlider sliderEnergyBefore;
-    private javax.swing.ButtonGroup source;
+    private javax.swing.ButtonGroup sources;
     private javax.swing.JTextField txtAngle;
     private javax.swing.JTextField txtEnergyBefore;
     private javax.swing.JLabel unitDegree;
