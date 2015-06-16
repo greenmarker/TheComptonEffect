@@ -1,4 +1,4 @@
-package compton.guinb;
+package compton.gui.netbeans;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -8,9 +8,9 @@ package compton.guinb;
 import static compton.utils.Utils.*;
 
 import compton.AppConstants;
-import compton.IParamsSource;
-import compton.Physics;
-import compton.animation.SinusoidComponent;
+import compton.gui.IParamsSource;
+import compton.utils.Physics;
+import compton.gui.common.animation.SinusoidComponent;
 
 import javax.swing.*;
 import java.awt.*;

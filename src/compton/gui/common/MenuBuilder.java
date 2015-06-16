@@ -1,4 +1,4 @@
-package compton.ui;
+package compton.gui.common;
 
 import javax.swing.*;
 import java.util.PropertyResourceBundle;

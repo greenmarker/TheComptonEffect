@@ -1,4 +1,4 @@
-package compton;
+package compton.gui;
 
 import java.text.NumberFormat;
 import java.text.ParseException;

@@ -1,5 +1,5 @@
 
-import compton.ui.MenuCompton;
+import compton.gui.miglayout.MenuCompton;
 
 /**
  * Created by Kamil on 2015-06-13.

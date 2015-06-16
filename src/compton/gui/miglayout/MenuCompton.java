@@ -1,20 +1,22 @@
-package compton.ui;
+package compton.gui.miglayout;
 
-import compton.IParamsSource;
-import compton.animation.SinusoidComponent;
+import compton.gui.IParamsSource;
+import compton.gui.common.animation.SinusoidComponent;
 
 import java.awt.*;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
-import java.util.Timer;
 
 import javax.swing.*;
 
+import compton.gui.common.MenuBuilder;
 import net.miginfocom.swing.MigLayout;
 
 
 public class MenuCompton extends JFrame implements IParamsSource {
 	final ResourceBundle bundle = PropertyResourceBundle.getBundle("compton");
+
+	OptionsPanel optionsPanel = new OptionsPanel(); // we'll need reference, because we need to return Angle from it
 
 	public MenuCompton() {
 		//Ramka Główna
@@ -26,12 +28,8 @@ public class MenuCompton extends JFrame implements IParamsSource {
 		mainFrame.setLayout(new MigLayout());
 		mainFrame.add(createMenu(),  "north");
 		mainFrame.add(createAnimationPanel(), "center");
-		mainFrame.add(createOptionsPanel(),"west,south");
+		mainFrame.add(optionsPanel,"west,south");
 		mainFrame.setVisible(true);
-	}
-
-	private OptionsPanel createOptionsPanel() {
-		return new OptionsPanel();
 	}
 
 	private JPanel createMenu(){
@@ -58,6 +56,6 @@ public class MenuCompton extends JFrame implements IParamsSource {
 
 	@Override
 	public double getAngle() {
-		return 0;
+		return optionsPanel.getAngle();
 	}
 }

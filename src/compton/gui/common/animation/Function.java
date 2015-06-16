@@ -1,4 +1,4 @@
-package compton.animation;
+package compton.gui.common.animation;
 
 public interface Function {
 	

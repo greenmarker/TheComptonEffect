@@ -1,4 +1,4 @@
-package compton;
+package compton.utils;
 
 /**
  * Created by Kamil on 2015-06-13.

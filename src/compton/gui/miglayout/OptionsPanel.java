@@ -1,4 +1,6 @@
-package compton.ui;
+package compton.gui.miglayout;
+
+import static compton.utils.Utils.*;
 
 import java.awt.Dimension;
 import java.util.Hashtable;
@@ -87,5 +89,9 @@ public class OptionsPanel extends JPanel {
         optionPanel.add(sourceCez,"wrap");
         optionPanel.add(sourceJod);
         add(optionPanel);
+	}
+
+	public double getAngle() {
+		return parseDouble(angleBeforeField.getText());
 	}
 }

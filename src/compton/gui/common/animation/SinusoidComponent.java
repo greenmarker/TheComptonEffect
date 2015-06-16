@@ -1,12 +1,10 @@
-package compton.animation;
+package compton.gui.common.animation;
 
 
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Polygon;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -38,14 +36,14 @@ public class SinusoidComponent extends JPanel {
     protected void paintComponent(final Graphics g) { //rysowanie
         final Graphics2D g2 = (Graphics2D) g;
 
+        // move point (0,0) to the center of the pane
         g2.translate(getWidth() / 2, getHeight() / 2);
 
-        drawBackground(g2);
-        drawSprite(g2);
+            drawBackground(g2);
+            drawSprite(g2);
+            drawElectron(g2);
 
-        drawElectron(g2);
-
-        // restore
+        // move point (0,0) back to the top left corner
         g2.translate(getWidth() / 2, getHeight() / 2);
     }
 
@@ -79,8 +77,6 @@ public class SinusoidComponent extends JPanel {
 
         int r = getRadius();
 
-//        g2.setColor(Color.WHITE);
-//        g2.fillOval(-r, -r, 2*r, 2*r);
         g2.setColor(Color.GRAY);
         g2.drawOval(-r, -r, 2*r, 2*r);
 

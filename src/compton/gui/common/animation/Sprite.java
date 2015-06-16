@@ -1,7 +1,7 @@
-package compton.animation;
+package compton.gui.common.animation;
 
 import compton.AppConstants;
-import compton.guinb.MenuCompton2;
+import compton.gui.netbeans.MenuCompton2;
 
 import java.awt.*;
 
@@ -10,7 +10,7 @@ import java.awt.*;
  */
 public class Sprite {
 
-    private double amplitudeBefore = AppConstants.AMPLITUDE; //amplituda przed efektem Comptona
+    private double amplitude = AppConstants.AMPLITUDE; //amplituda przed efektem Comptona
     private double angle = 45;
     private int frequency = 2;	//częstotliwość
     private int x0;
@@ -46,7 +46,7 @@ public class Sprite {
             public double f(double x) {
                 return Math.sin(x);
             }
-        }, amplitudeBefore, angle, 50, x0 + x);
+        }, amplitude, angle, 50, x0 + x);
     }
 
     /**
@@ -59,7 +59,7 @@ public class Sprite {
      * @param mx end of the wave
      */
     public void drawFunction(Graphics2D g2, Function f, double amplitudeBefore, double angle, double wavelength, int mx){
-        System.out.println("mx:"+mx);
+        //System.out.println("mx:"+mx);
         if (mx<0) {
             Polygon p = new Polygon();
             int startx = (int)(mx-wavelength);
