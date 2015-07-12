@@ -8,7 +8,7 @@ package compton.gui.netbeans;
 import static compton.utils.Utils.*;
 import compton.AppConstants;
 import compton.gui.GuiReferenceHolder;
-import compton.gui.IParamsSource;
+import compton.gui.IGui;
 import compton.utils.Physics;
 import compton.gui.common.MenuBuilder;
 import compton.gui.common.animation.SinusoidComponent;
@@ -21,7 +21,7 @@ import java.awt.*;
  *
  * @author Kamil
  */
-public class MenuCompton2 extends JFrame implements IParamsSource {
+public class MenuCompton2 extends JFrame implements IGui {
 
     /**
      * Creates new form MenuCompton2
@@ -32,6 +32,7 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
         panelAnimation.add(new SinusoidComponent(), BorderLayout.CENTER);
         updateEnergyAfter();
         GuiReferenceHolder.gui = this;
+        changeLanguage(); // just to set title
     }
 
     /**
@@ -361,4 +362,18 @@ public class MenuCompton2 extends JFrame implements IParamsSource {
 	public double getAngle() {
 		return parseDouble(txtAngle.getText());
 	}
+
+    public void changeLanguage(){
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("compton"); // NOI18N
+
+        this.setTitle(bundle.getString("app_title"));
+        labelAngle.setText(bundle.getString("parameter_angle")); // NOI18N
+        labelEnergyAfter.setText(bundle.getString("parameter_energy_after_dissipation")); // NOI18N
+        labelEnergyBefore.setText(bundle.getString("parameter_energy_before_dissipation")); // NOI18N
+        labelSource.setText(bundle.getString("sample_sources")); // NOI18N
+        radioCaesium.setText(bundle.getString("caesium")); // NOI18N
+        radioIodine.setText(bundle.getString("iodine")); // NOI18N
+        radioUranium.setText(bundle.getString("uranium")); // NOI18N
+
+    }
 }

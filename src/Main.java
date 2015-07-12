@@ -7,7 +7,7 @@ import compton.gui.miglayout.MenuCompton;
 public class Main {
 
     public static void main(String[] args) {
-        //Ramka G��wna
+        //Ramka Główna
         MenuCompton frame1 = new MenuCompton();
     }
 }

@@ -6,7 +6,7 @@ import java.awt.Polygon;
 
 import compton.AppConstants;
 import compton.gui.GuiReferenceHolder;
-import compton.gui.IParamsSource;
+import compton.gui.IGui;
 
 /**
  * Created by Kamil on 2015-06-14.
@@ -31,7 +31,7 @@ public class Sinusoid {
     }
 
     public void tryReadingParameters(){
-    	IParamsSource gui = GuiReferenceHolder.gui;
+    	IGui gui = GuiReferenceHolder.gui;
         if (gui!=null){
             // read parameters from Main frame
             angle = gui.getAngle();

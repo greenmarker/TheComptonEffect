@@ -1,7 +1,7 @@
 package compton.gui.miglayout;
 
 import compton.gui.GuiReferenceHolder;
-import compton.gui.IParamsSource;
+import compton.gui.IGui;
 import compton.gui.common.animation.SinusoidComponent;
 
 import java.awt.*;
@@ -14,7 +14,7 @@ import compton.gui.common.MenuBuilder;
 import net.miginfocom.swing.MigLayout;
 
 
-public class MenuCompton extends JFrame implements IParamsSource {
+public class MenuCompton extends JFrame implements IGui {
 	final static ResourceBundle bundle = PropertyResourceBundle.getBundle("compton");
 
 	OptionsPanel optionsPanel = new OptionsPanel(); // we'll need reference, because we need to return Angle from it
@@ -60,5 +60,11 @@ public class MenuCompton extends JFrame implements IParamsSource {
 	@Override
 	public double getAngle() {
 		return optionsPanel.getAngle();
+	}
+
+	@Override
+	public void changeLanguage() {
+		setTitle(bundle.getString("app_title"));
+		optionsPanel.changeLanguage();
 	}
 }

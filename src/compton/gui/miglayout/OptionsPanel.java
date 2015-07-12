@@ -24,7 +24,7 @@ import net.miginfocom.swing.MigLayout;
 
 public class OptionsPanel extends JPanel {
 
-	final ResourceBundle bundle = PropertyResourceBundle.getBundle("compton");
+	ResourceBundle bundle = PropertyResourceBundle.getBundle("compton");
 
 	JPanel optionPanel = new JPanel(new MigLayout());
 
@@ -156,7 +156,21 @@ public class OptionsPanel extends JPanel {
 		}
 	}
 
+
 	public double getAngle() {
 		return parseDouble(angleBeforeField.getText());
+	}
+
+	public void changeLanguage() {
+		bundle = PropertyResourceBundle.getBundle("compton");
+
+		optionTitle.setText(bundle.getString("menu_sample"));
+		fotonEnergyBefore.setText(bundle.getString("parameter_energy_before_dissipation"));
+		angleBefore.setText(bundle.getString("parameter_angle"));
+		fotonEnergyAfter.setText(bundle.getString("parameter_energy_after_dissipation"));
+		sourceExample.setText(bundle.getString("sample_sources"));
+		sourceCez.setText(bundle.getString("caesium"));
+		sourceJod.setText(bundle.getString("iodine"));
+		//sourceUran.setText(bundle.getString("uranium"));
 	}
 }
