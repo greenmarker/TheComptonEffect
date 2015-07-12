@@ -35,6 +35,8 @@ public class MenuBuilder {
         file.add(option);
         file.add(exit);
 
+        exit.addActionListener(new Exit());
+
         //Od Zjawiska Comptona
         mainMenu.add(comptonEffect);
         comptonEffect.add(effect);
@@ -80,6 +82,15 @@ public class MenuBuilder {
                     changeLanguage();
                 }
             });
+        }
+    }
+
+    private class Exit implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            ((JFrame)GuiReferenceHolder.gui).dispose();
+            System.exit(0);
         }
     }
 }
